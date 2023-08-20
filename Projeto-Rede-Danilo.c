@@ -17,7 +17,7 @@
 // Funções
 void tela_inicial(void);
 void tela_sobre_projeto(void);
-//void tela_sobre_desenvolvedor(void);
+void tela_sobre_desenvolvedor(void);
 //void tela_menu_produtos(void);
 //void tela_adicionar_produto(void);
 //void tela_buscar_produto(void);
@@ -28,7 +28,7 @@ void tela_sobre_projeto(void);
 int main(void) {
     tela_inicial();
     tela_sobre_projeto();
-    //tela_sobre_desenvolvedor();
+    tela_sobre_desenvolvedor();
     //tela_menu_produtos();
     //tela_adicionar_produto();
     //tela_buscar_produto();
@@ -40,7 +40,7 @@ int main(void) {
 //Funções que serão chamadas pela função main()
 
 void tela_inicial(void)
-{   
+{   system("clear||cls");
     setlocale(LC_ALL,"Portuguese_Brazil");
     char escolha;
     printf("===============================================================================");
@@ -87,6 +87,7 @@ void tela_inicial(void)
 
 void tela_sobre_projeto(void)
 {
+    system("clear||cls");
     setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================");
     printf("\n");
@@ -123,6 +124,45 @@ void tela_sobre_projeto(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===  Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_sobre_desenvolvedor(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===               Universidade Federal do Rio Grande do Norte               ===");
+    printf("\n");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                   Centro de Ensino Superior do Seridó                   ===");
+    printf("\n");
+    printf("===                Departamento de Computação e Tecnologia                  ===");
+    printf("\n");
+    printf("===                   Disciplina DCT1106 -- Programação                     ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===      Projeto Sistema de Gestão para uma Fábrica de Redes de Dormir      ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===============================================================================\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===       >>>Sistema de Gestão para uma Fábrica de Redes de Dormir<<<       ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          Projeto Hammock está sendo desenvolvido por:                   ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          Aluno: Danilo Gabriel de Medeiros Brito                        ===\n");
+    printf("===          E-mail: danilogabrill@outlook.com                              ===\n");
+    printf("===          Contato: @DaniloMano (Github)                                  ===\n");
+    printf("===          Repositório: https://github.com/DaniloMano/DaniloBSI-PROJETO   ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
     getchar();
     printf("===============================================================================");
 }
