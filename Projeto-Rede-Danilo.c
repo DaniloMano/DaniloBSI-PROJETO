@@ -18,7 +18,7 @@
 void tela_inicial(void);
 void tela_sobre_projeto(void);
 void tela_sobre_desenvolvedor(void);
-//void tela_menu_produtos(void);
+void tela_menu_produtos(void);
 //void tela_adicionar_produto(void);
 //void tela_buscar_produto(void);
 //void tela_editar_produto(void);
@@ -29,7 +29,7 @@ int main(void) {
     tela_inicial();
     tela_sobre_projeto();
     tela_sobre_desenvolvedor();
-    //tela_menu_produtos();
+    tela_menu_produtos();
     //tela_adicionar_produto();
     //tela_buscar_produto();
     //tela_editar_produto();
@@ -161,6 +161,40 @@ void tela_sobre_desenvolvedor(void)
     printf("===          Repositório: https://github.com/DaniloMano/DaniloBSI-PROJETO   ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_menu_produtos(void)
+{   system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    char escolha;
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                      |Fábrica de Redes de Dormir|                       ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        >>>|MENU PRODUTOS|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                                                                         ===\n");
+    printf("===          1. Adicionar Novo Produto                                      ===\n");
+    printf("===          2. Buscar Produto em Estoque                                   ===\n");
+    printf("===          3. Editar Dados de um Produto                                  ===\n");
+    printf("===          4. Deletar Cadastro de um Produto                              ===\n");
+    printf("===          0. Sair                                                        ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===          Escolha a opção desejada: ");
+    scanf("%c", &escolha);
+    getchar();
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
