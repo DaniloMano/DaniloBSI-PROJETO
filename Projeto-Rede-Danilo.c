@@ -333,3 +333,132 @@ void tela_deletar_produto(void)
     getchar();
     printf("===============================================================================");
 }
+
+void tela_menu_vendas(void)
+{   system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    char escolha;
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                      |Fábrica de Redes de Dormir|                       ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                          >>>|MENU Vendas|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                                                                         ===\n");
+    printf("===          1. Realizar Nova Venda                                         ===\n");
+    printf("===          2. Pesquisar Venda no Histórico de Vendas                      ===\n");
+    printf("===          3. Editar Dados de uma Venda                                   ===\n");
+    printf("===          0. Sair                                                        ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===          Escolha a opção desejada: ");
+    scanf("%c", &escolha);
+    getchar();
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_realizar_venda(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                          >>>|MENU Vendas|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                         |Realizar Venda|                                ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          Código do Produto (Apenas Números):                            ===\n");
+    printf("===          Quantidade a ser Vendida:                                      ===\n");
+    printf("===          Forma de Pagamento:                                            ===\n");
+    printf("===          CPF/CNPJ do Cliente:                                           ===\n");
+    printf("===          Data da Venda:                                                 ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_pesquisar_venda(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                          >>>|MENU Vendas|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        |Pesquisar Venda|                                ===\n");
+    printf("===                                                                         ===\n");
+    printf("===        [Digite o CPF/CNPJ do cliente cuja venda você quer Pesquisar]    ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+void tela_editar_venda(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                          >>>|MENU Vendas|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                         |Editar Venda|                                  ===\n");
+    printf("===                                                                         ===\n");
+    printf("===        [Digite o CPF/CNPJ do cliente cuja venda você quer Editar]       ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
