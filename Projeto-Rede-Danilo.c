@@ -23,6 +23,10 @@ void tela_adicionar_produto(void);
 void tela_buscar_produto(void);
 void tela_editar_produto(void);
 void tela_deletar_produto(void);
+void tela_menu_vendas(void);
+void tela_realizar_venda(void);
+void tela_pesquisar_venda(void);
+void tela_editar_venda(void);
 
 // Função Principal que chama todas as outras
 int main(void) {
@@ -34,7 +38,10 @@ int main(void) {
     tela_buscar_produto();
     tela_editar_produto();
     tela_deletar_produto();
-
+    tela_menu_vendas();
+    tela_realizar_venda();
+    tela_pesquisar_venda();
+    tela_editar_venda();
 }
 
 //Funções que serão chamadas pela função main()
@@ -158,7 +165,7 @@ void tela_sobre_desenvolvedor(void)
     printf("===          Aluno: Danilo Gabriel de Medeiros Brito                        ===\n");
     printf("===          E-mail: danilogabrill@outlook.com                              ===\n");
     printf("===          Contato: @DaniloMano (Github)                                  ===\n");
-    printf("===          Repositório: https://github.com/DaniloMano/DaniloBSI-PROJETO   ===\n");
+    printf("===          Repositório:https://github.com/DaniloMano/DaniloBSI-PROJETO.git===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
