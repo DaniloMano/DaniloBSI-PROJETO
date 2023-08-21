@@ -19,8 +19,8 @@ void tela_inicial(void);
 void tela_sobre_projeto(void);
 void tela_sobre_desenvolvedor(void);
 void tela_menu_produtos(void);
-//void tela_adicionar_produto(void);
-//void tela_buscar_produto(void);
+void tela_adicionar_produto(void);
+void tela_buscar_produto(void);
 //void tela_editar_produto(void);
 //void tela_deletar_produto(void);
 
@@ -30,8 +30,8 @@ int main(void) {
     tela_sobre_projeto();
     tela_sobre_desenvolvedor();
     tela_menu_produtos();
-    //tela_adicionar_produto();
-    //tela_buscar_produto();
+    tela_adicionar_produto();
+    tela_buscar_produto();
     //tela_editar_produto();
     //tela_deletar_produto();
 
@@ -195,6 +195,70 @@ void tela_menu_produtos(void)
     printf("===          Escolha a opção desejada: ");
     scanf("%c", &escolha);
     getchar();
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_adicionar_produto(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      |Adicionar Novo Produto|                           ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          Código (Apenas Números):                                       ===\n");
+    printf("===          Nome do Produto:                                               ===\n");
+    printf("===          Preço do Produto:                                              ===\n");
+    printf("===          Quantidade:                                                    ===\n");
+    printf("===          Data de Fabricação:                                            ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_buscar_produto(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        |Buscar Produto|                                 ===\n");
+    printf("===                                                                         ===\n");
+    printf("===        [Digite o código do produto que você deseja Pesquisar]           ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          Código(Apenas Números):                                        ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
