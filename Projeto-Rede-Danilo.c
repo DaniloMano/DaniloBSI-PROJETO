@@ -22,7 +22,7 @@ void tela_menu_produtos(void);
 void tela_adicionar_produto(void);
 void tela_buscar_produto(void);
 void tela_editar_produto(void);
-//void tela_deletar_produto(void);
+void tela_deletar_produto(void);
 
 // Função Principal que chama todas as outras
 int main(void) {
@@ -33,7 +33,7 @@ int main(void) {
     tela_adicionar_produto();
     tela_buscar_produto();
     tela_editar_produto();
-    //tela_deletar_produto();
+    tela_deletar_produto();
 
 }
 
@@ -284,6 +284,37 @@ void tela_editar_produto(void)
     printf("===                        |Editar Produto|                                 ===\n");
     printf("===                                                                         ===\n");
     printf("===        [Digite o código do produto que você deseja Editar]              ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          Código(Apenas Números):                                        ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+void tela_deletar_produto(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================");
+    printf("\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===");
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===");
+    printf("\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===");
+    printf("\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        |Deletar Produto|                                ===\n");
+    printf("===                                                                         ===\n");
+    printf("===        [Digite o código do produto que você deseja Deletar]             ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===          Código(Apenas Números):                                        ===\n");
