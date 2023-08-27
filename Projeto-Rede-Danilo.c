@@ -27,21 +27,35 @@ void tela_menu_vendas(void);
 void tela_realizar_venda(void);
 void tela_pesquisar_venda(void);
 void tela_editar_venda(void);
+void tela_menu_fornecedores(void);
+void tela_cadastrar_fornecedor(void);
+void tela_pesquisar_fornecedor(void);
+void tela_editar_contato_do_fornecedor(void);
+void tela_deletar_contato_do_fornecedor(void);
+
 
 // Função Principal que chama todas as outras
 int main(void) {
     tela_inicial();
     tela_sobre_projeto();
     tela_sobre_desenvolvedor();
+    //modulo produtos
     tela_menu_produtos();
     tela_adicionar_produto();
     tela_buscar_produto();
     tela_editar_produto();
     tela_deletar_produto();
+    //modulo vendas
     tela_menu_vendas();
     tela_realizar_venda();
     tela_pesquisar_venda();
     tela_editar_venda();
+    //modulo fornecedores
+    tela_menu_fornecedores();
+    tela_cadastrar_fornecedor();
+    tela_pesquisar_fornecedor();
+    tela_editar_contato_do_fornecedor();
+    tela_deletar_contato_do_fornecedor();
 }
 
 //Funções que serão chamadas pela função main()
@@ -387,6 +401,146 @@ void tela_editar_venda(void)
     printf("===                         |Editar Venda|                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===        [Digite o CPF/CNPJ do cliente cuja venda você quer Editar]       ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_menu_fornecedores(void)
+{   system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    char escolha;
+    printf("===============================================================================\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      |Fábrica de Redes de Dormir|                       ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                                                                         ===\n");
+    printf("===          1. Cadastrar Novo Fornecedor                                   ===\n");
+    printf("===          2. Pesquisar Contato de um Fornecedor                          ===\n");
+    printf("===          3. Editar Dados de um Fornecedor                               ===\n");
+    printf("===          4. Deletar Contato de um Fornecedor                            ===\n");
+    printf("===          0. Sair                                                        ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===          Escolha a opção desejada: ");
+    scanf("%c", &escolha);
+    getchar();
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_cadastrar_fornecedor(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                   |Cadastrar Novo Fornecedor|                           ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          Nome do Fornecedor:                                            ===\n");
+    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===          E-mail:                                                        ===\n");
+    printf("===          Celular:                                                       ===\n");
+    printf("===          Endereço:                                                      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+
+void tela_pesquisar_fornecedor(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                  |Pesquisar Fornecedor|                                 ===\n");
+    printf("===                                                                         ===\n");
+    printf("===        [Digite o CPF/CNPJ do Fornecedor que você deseja Pesquisar]      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+void tela_editar_contato_do_fornecedor(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                  |Editar Dados do Fornecedor|                           ===\n");
+    printf("===                                                                         ===\n");
+    printf("===        [Digite o CPF/CNPJ do Fornecedor que você deseja Editar]         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    printf("===          Aperte ENTER para prosseguir:");
+    getchar();
+    printf("===============================================================================");
+}
+void tela_deletar_contato_do_fornecedor(void)
+{
+    system("clear||cls");
+    setlocale(LC_ALL,"Portuguese_Brazil");
+    printf("===============================================================================\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                |Deletar Contato de um Fornecedor|                       ===\n");
+    printf("===                                                                         ===\n");
+    printf("===        [Digite o CPF/CNPJ do Fornecedor que você deseja Deletar]        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
