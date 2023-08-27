@@ -1,11 +1,11 @@
 //===============================================================================
 //===               Universidade Federal do Rio Grande do Norte               ===
 //===============================================================================
-//===                   Centro de Ensino Superior do Serid√≥                   ===
-//===                Departamento de Computa√ß√£o e Tecnologia                  ===
-//===                   Disciplina DCT1106 -- Programa√ß√£o                     ===
+//===                   Centro de Ensino Superior do SeridÛ                   ===
+//===                Departamento de ComputaÁ„o e Tecnologia                  ===
+//===                   Disciplina DCT1106 -- ProgramaÁ„o                     ===
 //===-------------------------------------------------------------------------===
-//===      Projeto Sistema de Gest√£o para uma F√°brica de Redes de Dormir      ===
+//===      Projeto Sistema de Gest„o para uma F·brica de Redes de Dormir      ===
 //===============================================================================
 //===             Developed by @DaniloMano -- since Aug, 2023                 ===
 //===============================================================================
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <locale.h>
 
-// Fun√ß√µes
+// FunÁıes
 void tela_inicial(void);
 void tela_sobre_projeto(void);
 void tela_sobre_desenvolvedor(void);
@@ -28,7 +28,7 @@ void tela_realizar_venda(void);
 void tela_pesquisar_venda(void);
 void tela_editar_venda(void);
 
-// Fun√ß√£o Principal que chama todas as outras
+// FunÁ„o Principal que chama todas as outras
 int main(void) {
     tela_inicial();
     tela_sobre_projeto();
@@ -44,7 +44,7 @@ int main(void) {
     tela_editar_venda();
 }
 
-//Fun√ß√µes que ser√£o chamadas pela fun√ß√£o main()
+//FunÁıes que ser„o chamadas pela funÁ„o main()
 
 void tela_inicial(void)
 {   system("clear||cls");
@@ -53,27 +53,27 @@ void tela_inicial(void)
     printf("===============================================================================\n");
     printf("===               Universidade Federal do Rio Grande do Norte               ===\n");
     printf("===============================================================================\n");
-    printf("===                   Centro de Ensino Superior do Serid√≥                   ===\n");
-    printf("===                Departamento de Computa√ß√£o e Tecnologia                  ===\n");
-    printf("===                   Disciplina DCT1106 -- Programa√ß√£o                     ===\n");
+    printf("===                   Centro de Ensino Superior do SeridÛ                   ===\n");
+    printf("===                Departamento de ComputaÁ„o e Tecnologia                  ===\n");
+    printf("===                   Disciplina DCT1106 -- ProgramaÁ„o                     ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===      Projeto Sistema de Gest√£o para uma F√°brica de Redes de Dormir      ===\n");
+    printf("===      Projeto Sistema de Gest„o para uma F·brica de Redes de Dormir      ===\n");
     printf("===============================================================================\n");
     printf("===             Developed by @DaniloMano -- since Aug, 2023                 ===\n");
     printf("===============================================================================\n");
     printf("===============================================================================\n");
     printf("===                                                                         ===\n");
-    printf("===          Sistema de Gest√£o para uma F√°brica de Redes de Dormir          ===\n");
+    printf("===          Sistema de Gest„o para uma F·brica de Redes de Dormir          ===\n");
     printf("===                                                                         ===\n");
-    printf("===            1. M√≥dulo Produtos                                           ===\n");
-    printf("===            2. M√≥dulo Vendas                                             ===\n");
-    printf("===            3. M√≥dulo Fornecedores                                       ===\n");
+    printf("===            1. MÛdulo Produtos                                           ===\n");
+    printf("===            2. MÛdulo Vendas                                             ===\n");
+    printf("===            3. MÛdulo Fornecedores                                       ===\n");
     printf("===            4. Sobre o Projeto                                           ===\n");
     printf("===            5. Desenvolvedor                                             ===\n");
     printf("===            0. Sair                                                      ===\n");
     printf("===                                                                         ===\n");
     printf("===============================================================================\n");
-    printf("===            Escolha a op√ß√£o desejada: ");
+    printf("===            Escolha a opÁ„o desejada: ");
     scanf("%c", &escolha);
     getchar();
     printf("===============================================================================\n");
@@ -89,24 +89,24 @@ void tela_sobre_projeto(void)
     printf("===============================================================================\n");
     printf("===               Universidade Federal do Rio Grande do Norte               ===\n");
     printf("===============================================================================\n");
-    printf("===                   Centro de Ensino Superior do Serid√≥                   ===\n");
-    printf("===                Departamento de Computa√ß√£o e Tecnologia                  ===\n");
-    printf("===                   Disciplina DCT1106 -- Programa√ß√£o                     ===\n");
+    printf("===                   Centro de Ensino Superior do SeridÛ                   ===\n");
+    printf("===                Departamento de ComputaÁ„o e Tecnologia                  ===\n");
+    printf("===                   Disciplina DCT1106 -- ProgramaÁ„o                     ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===      Projeto Sistema de Gest√£o para uma F√°brica de Redes de Dormir      ===\n");
+    printf("===      Projeto Sistema de Gest„o para uma F·brica de Redes de Dormir      ===\n");
     printf("===============================================================================\n");
     printf("===             Developed by @DaniloMano -- since Aug, 2023                 ===\n");
     printf("===============================================================================\n");
     printf("===============================================================================\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===       >>>Sistema de Gest√£o para uma F√°brica de Redes de Dormir<<<       ===\n");
+    printf("===       >>>Sistema de Gest„o para uma F·brica de Redes de Dormir<<<       ===\n");
     printf("===                                                                         ===\n");
-    printf("===  Este Programa ser√° usado como forma de avalia√ß√£o do desempenho do      ===\n");
-    printf("===  aluno Danilo Gabriel como programador, como tamb√©m do seu dom√≠nio no   ===\n");
+    printf("===  Este Programa ser· usado como forma de avaliaÁ„o do desempenho do      ===\n");
+    printf("===  aluno Danilo Gabriel como programador, como tambÈm do seu domÌnio no   ===\n");
     printf("===  uso do VS Code e de C, na disciplina DCT1106. Este Programa apresenta  ===\n");
-    printf("===  os m√≥dulos centrais e funcionalidades exigidas para a execu√ß√£o e       ===\n");
-    printf("===  avalia√ß√£o do Projeto desenvolvido, sendo desenvolvido tendo como base  ===\n");
-    printf("===  a experi√™ncia adquirida assistindo √†s apresenta√ß√µes e orienta√ß√µes de   ===\n");
+    printf("===  os mÛdulos centrais e funcionalidades exigidas para a execuÁ„o e       ===\n");
+    printf("===  avaliaÁ„o do Projeto desenvolvido, sendo desenvolvido tendo como base  ===\n");
+    printf("===  a experiÍncia adquirida assistindo ‡s apresentaÁıes e orientaÁıes de   ===\n");
     printf("===  projetos do primeiro semestre.                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
@@ -122,22 +122,22 @@ void tela_sobre_desenvolvedor(void)
     printf("===============================================================================\n");
     printf("===               Universidade Federal do Rio Grande do Norte               ===\n");
     printf("===============================================================================\n");
-    printf("===                   Centro de Ensino Superior do Serid√≥                   ===\n");
-    printf("===                Departamento de Computa√ß√£o e Tecnologia                  ===\n");
-    printf("===                   Disciplina DCT1106 -- Programa√ß√£o                     ===\n");
+    printf("===                   Centro de Ensino Superior do SeridÛ                   ===\n");
+    printf("===                Departamento de ComputaÁ„o e Tecnologia                  ===\n");
+    printf("===                   Disciplina DCT1106 -- ProgramaÁ„o                     ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===      Projeto Sistema de Gest√£o para uma F√°brica de Redes de Dormir      ===\n");
+    printf("===      Projeto Sistema de Gest„o para uma F·brica de Redes de Dormir      ===\n");
     printf("===============================================================================\n");
     printf("===============================================================================\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===       >>>Sistema de Gest√£o para uma F√°brica de Redes de Dormir<<<       ===\n");
+    printf("===       >>>Sistema de Gest„o para uma F·brica de Redes de Dormir<<<       ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Projeto Hammock est√° sendo desenvolvido por:                   ===\n");
+    printf("===          Projeto Hammock est· sendo desenvolvido por:                   ===\n");
     printf("===                                                                         ===\n");
     printf("===          Aluno: Danilo Gabriel de Medeiros Brito                        ===\n");
     printf("===          E-mail: danilogabrill@outlook.com                              ===\n");
     printf("===          Contato: @DaniloMano (Github)                                  ===\n");
-    printf("===          Reposit√≥rio:https://github.com/DaniloMano/DaniloBSI-PROJETO.git===\n");
+    printf("===          RepositÛrio:https://github.com/DaniloMano/DaniloBSI-PROJETO.git===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
@@ -155,7 +155,7 @@ void tela_menu_produtos(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                      |F√°brica de Redes de Dormir|                       ===\n");
+    printf("===                      |F·brica de Redes de Dormir|                       ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        >>>|MENU PRODUTOS|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -167,7 +167,7 @@ void tela_menu_produtos(void)
     printf("===          0. Sair                                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===          Escolha a op√ß√£o desejada: ");
+    printf("===          Escolha a opÁ„o desejada: ");
     scanf("%c", &escolha);
     getchar();
     printf("===============================================================================\n");
@@ -185,17 +185,17 @@ void tela_adicionar_produto(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |F√°brica de Redes de Dormir|                          ===\n");
+    printf("===                   |F·brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      |Adicionar Novo Produto|                           ===\n");
     printf("===                                                                         ===\n");
-    printf("===          C√≥digo (Apenas N√∫meros):                                       ===\n");
+    printf("===          CÛdigo (Apenas N˙meros):                                       ===\n");
     printf("===          Nome do Produto:                                               ===\n");
-    printf("===          Pre√ßo do Produto:                                              ===\n");
+    printf("===          PreÁo do Produto:                                              ===\n");
     printf("===          Quantidade:                                                    ===\n");
-    printf("===          Data de Fabrica√ß√£o:                                            ===\n");
+    printf("===          Data de FabricaÁ„o:                                            ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
@@ -213,16 +213,16 @@ void tela_buscar_produto(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |F√°brica de Redes de Dormir|                          ===\n");
+    printf("===                   |F·brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        |Buscar Produto|                                 ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o c√≥digo do produto que voc√™ deseja Pesquisar]           ===\n");
+    printf("===        [Digite o cÛdigo do produto que vocÍ deseja Pesquisar]           ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          C√≥digo(Apenas N√∫meros):                                        ===\n");
+    printf("===          CÛdigo(Apenas N˙meros):                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -240,16 +240,16 @@ void tela_editar_produto(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |F√°brica de Redes de Dormir|                          ===\n");
+    printf("===                   |F·brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        |Editar Produto|                                 ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o c√≥digo do produto que voc√™ deseja Editar]              ===\n");
+    printf("===        [Digite o cÛdigo do produto que vocÍ deseja Editar]              ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          C√≥digo(Apenas N√∫meros):                                        ===\n");
+    printf("===          CÛdigo(Apenas N˙meros):                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -267,16 +267,16 @@ void tela_deletar_produto(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |F√°brica de Redes de Dormir|                          ===\n");
+    printf("===                   |F·brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        |Deletar Produto|                                ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o c√≥digo do produto que voc√™ deseja Deletar]             ===\n");
+    printf("===        [Digite o cÛdigo do produto que vocÍ deseja Deletar]             ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          C√≥digo(Apenas N√∫meros):                                        ===\n");
+    printf("===          CÛdigo(Apenas N˙meros):                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -295,19 +295,19 @@ void tela_menu_vendas(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                      |F√°brica de Redes de Dormir|                       ===\n");
+    printf("===                      |F·brica de Redes de Dormir|                       ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                          >>>|MENU Vendas|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                                                                         ===\n");
     printf("===          1. Realizar Nova Venda                                         ===\n");
-    printf("===          2. Pesquisar Venda no Hist√≥rico de Vendas                      ===\n");
+    printf("===          2. Pesquisar Venda no HistÛrico de Vendas                      ===\n");
     printf("===          3. Editar Dados de uma Venda                                   ===\n");
     printf("===          0. Sair                                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===          Escolha a op√ß√£o desejada: ");
+    printf("===          Escolha a opÁ„o desejada: ");
     scanf("%c", &escolha);
     getchar();
     printf("===============================================================================\n");
@@ -325,13 +325,13 @@ void tela_realizar_venda(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |F√°brica de Redes de Dormir|                          ===\n");
+    printf("===                   |F·brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                          >>>|MENU Vendas|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                         |Realizar Venda|                                ===\n");
     printf("===                                                                         ===\n");
-    printf("===          C√≥digo do Produto (Apenas N√∫meros):                            ===\n");
+    printf("===          CÛdigo do Produto (Apenas N˙meros):                            ===\n");
     printf("===          Quantidade a ser Vendida:                                      ===\n");
     printf("===          Forma de Pagamento:                                            ===\n");
     printf("===          CPF/CNPJ do Cliente:                                           ===\n");
@@ -353,16 +353,16 @@ void tela_pesquisar_venda(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |F√°brica de Redes de Dormir|                          ===\n");
+    printf("===                   |F·brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                          >>>|MENU Vendas|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        |Pesquisar Venda|                                ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o CPF/CNPJ do cliente cuja venda voc√™ quer Pesquisar]    ===\n");
+    printf("===        [Digite o CPF/CNPJ do cliente cuja venda vocÍ quer Pesquisar]    ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas N√∫meros):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas N˙meros):                                      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -380,16 +380,16 @@ void tela_editar_venda(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |F√°brica de Redes de Dormir|                          ===\n");
+    printf("===                   |F·brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                          >>>|MENU Vendas|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                         |Editar Venda|                                  ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o CPF/CNPJ do cliente cuja venda voc√™ quer Editar]       ===\n");
+    printf("===        [Digite o CPF/CNPJ do cliente cuja venda vocÍ quer Editar]       ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas N√∫meros):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas N˙meros):                                      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -398,4 +398,3 @@ void tela_editar_venda(void)
     getchar();
     printf("===============================================================================");
 }
-
