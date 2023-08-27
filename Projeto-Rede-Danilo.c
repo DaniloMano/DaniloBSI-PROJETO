@@ -18,19 +18,39 @@
 void tela_inicial(void);
 void tela_sobre_projeto(void);
 void tela_sobre_desenvolvedor(void);
+// função produtos
 void tela_menu_produtos(void);
 void tela_adicionar_produto(void);
 void tela_buscar_produto(void);
 void tela_editar_produto(void);
+//escolha do que deseja editar
+//void tela_editar_Nome_do_Produto(void)
+//void tela_editar_Preço_do_Produto(void)
+//void tela_editar_Quantidade(void)
+//void tela_editar_Data_de_Fabricação(void)
 void tela_deletar_produto(void);
+
+//função vendas
 void tela_menu_vendas(void);
 void tela_realizar_venda(void);
 void tela_pesquisar_venda(void);
 void tela_editar_venda(void);
+//escolha o que deseja editar
+//void tela_editar_Quantidade_Vendida(void)
+//void tela_editar_Forma_de_Pagamento(void)
+//void tela_editar_CPF(void)
+//void tela_editar_Data da Venda(void)
+
+//função fornecedores
 void tela_menu_fornecedores(void);
 void tela_cadastrar_fornecedor(void);
 void tela_pesquisar_fornecedor(void);
 void tela_editar_contato_do_fornecedor(void);
+//void tela_editar_Nome_Fornecedor(void)
+//void tela_editar_CPF_fornecedor(void)
+//void tela_editar_E-mail(void)
+//void tela_editar_Celular(void)
+//void tela_editar_Endereço(void)
 void tela_deletar_contato_do_fornecedor(void);
 
 
@@ -39,22 +59,40 @@ int main(void) {
     tela_inicial();
     tela_sobre_projeto();
     tela_sobre_desenvolvedor();
+
     //modulo produtos
     tela_menu_produtos();
     tela_adicionar_produto();
     tela_buscar_produto();
     tela_editar_produto();
+    //escolha o que deseja editar()
+    //tela_editar_Nome_do_Produto()
+    //tela_editar_Preço_do_Produto()
+    //tela_editar_Quantidade()
+    //tela_editar_Data_de_Fabricação()
     tela_deletar_produto();
+
     //modulo vendas
     tela_menu_vendas();
     tela_realizar_venda();
     tela_pesquisar_venda();
     tela_editar_venda();
+    //escolha o que deseja editar
+    //tela_editar_Quantidade_Vendida()
+    //tela_editar_Forma_de_Pagamento()
+    //tela_editar_CPF()
+    //tela_editar_Data da Venda()
+
     //modulo fornecedores
     tela_menu_fornecedores();
     tela_cadastrar_fornecedor();
     tela_pesquisar_fornecedor();
     tela_editar_contato_do_fornecedor();
+    //tela_editar_Nome_Fornecedor()
+    //tela_editar_CPF_fornecedor()
+    //tela_editar_E-mail()
+    //tela_editar_Celular()
+    //tela_editar_Endereço()
     tela_deletar_contato_do_fornecedor();
 }
 
