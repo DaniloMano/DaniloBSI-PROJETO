@@ -19,6 +19,8 @@
 
 void do_menu_inicial(void);
 void do_menu_produtos(void);
+void do_menu_vendas(void);
+void do_menu_fornecedores(void);
 
 void tela_inicial(void);
 void tela_sobre_projeto(void);
@@ -127,10 +129,10 @@ void do_menu_inicial(void) {
                 do_menu_produtos();
                 break;
             case 2:
-                tela_menu_vendas();
+                do_menu_vendas();
                 break;
             case 3:
-                tela_menu_fornecedores();
+                do_menu_fornecedores();
                 break;
             case 4:
                 tela_sobre_projeto();
@@ -153,7 +155,7 @@ void do_menu_produtos(void) {
     int escolha;
 
     do {
-        // Exibe o menu inicial
+        // Exibe o menu produtos
         tela_menu_produtos();
         printf("===            Escolha a opção desejada: ");
         scanf("%d", &escolha);
@@ -171,8 +173,35 @@ void do_menu_produtos(void) {
             case 4:
                 tela_deletar_produto();
                 break;
-            case 5:
-                tela_sobre_desenvolvedor();
+            case 0:
+                break;
+            default:
+                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                getchar();
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
+}
+
+void do_menu_vendas(void) {
+    int escolha;
+
+    do {
+        // Exibe o menu produtos
+        tela_menu_vendas();
+        printf("===            Escolha a opção desejada: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                tela_realizar_venda();
+                break;
+            case 2:
+                tela_pesquisar_venda();
+                break;
+            case 3:
+                tela_editar_venda();
                 break;
             case 0:
                 break;
@@ -185,6 +214,38 @@ void do_menu_produtos(void) {
     } while (escolha != 0);
 }
 
+void do_menu_fornecedores(void) {
+    int escolha;
+
+    do {
+        // Exibe o menu produtos
+        tela_menu_fornecedores();
+        printf("===            Escolha a opção desejada: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                tela_cadastrar_fornecedor();
+                break;
+            case 2:
+                tela_pesquisar_fornecedor();
+                break;
+            case 3:
+                tela_editar_contato_do_fornecedor();
+                break;
+            case 4:
+                tela_deletar_contato_do_fornecedor();
+                break;
+            case 0:
+                break;
+            default:
+                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                getchar();
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
+}
 
 //função tela inicial
 void tela_inicial(void)
@@ -210,7 +271,7 @@ void tela_inicial(void)
     printf("===            3. Módulo Fornecedores                                       ===\n");
     printf("===            4. Sobre o Projeto                                           ===\n");
     printf("===            5. Desenvolvedor                                             ===\n");
-    printf("===            0. Sair                                                      ===\n");
+    printf("===            0. Encerrar o Programa                                       ===\n");
     printf("===                                                                         ===\n");
     printf("===============================================================================\n");
 }
@@ -572,7 +633,6 @@ void tela_deletar_produto(void)
 void tela_menu_vendas(void)
 {   system("clear||cls");
     setlocale(LC_ALL,"Portuguese_Brazil");
-    char escolha;
     printf("===============================================================================\n");
     printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
     printf("===============================================================================\n");
@@ -590,13 +650,8 @@ void tela_menu_vendas(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===          Escolha a opção desejada: ");
-    scanf("%c", &escolha);
-    getchar();
     printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+
 }
 
 void tela_realizar_venda(void)
@@ -623,6 +678,7 @@ void tela_realizar_venda(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -652,6 +708,7 @@ void tela_pesquisar_venda(void)
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
+    getchar();
     printf("===============================================================================");
 }
 void tela_editar_venda(void)
@@ -678,6 +735,7 @@ void tela_editar_venda(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -804,7 +862,6 @@ void tela_editar_anular_venda(void)
 void tela_menu_fornecedores(void)
 {   system("clear||cls");
     setlocale(LC_ALL,"Portuguese_Brazil");
-    char escolha;
     printf("===============================================================================\n");
     printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
     printf("===============================================================================\n");
@@ -822,13 +879,6 @@ void tela_menu_fornecedores(void)
     printf("===          0. Sair                                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===          Escolha a opção desejada: ");
-    scanf("%c", &escolha);
-    getchar();
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
 }
 
 void tela_cadastrar_fornecedor(void)
@@ -855,6 +905,7 @@ void tela_cadastrar_fornecedor(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -884,6 +935,7 @@ void tela_pesquisar_fornecedor(void)
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
+    getchar();
     printf("===============================================================================");
 }
 void tela_editar_contato_do_fornecedor(void)
@@ -910,6 +962,7 @@ void tela_editar_contato_do_fornecedor(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -1083,6 +1136,7 @@ void tela_deletar_contato_do_fornecedor(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
