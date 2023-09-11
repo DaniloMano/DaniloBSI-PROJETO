@@ -15,6 +15,11 @@
 #include <locale.h>
 
 // Funções
+//switchcases
+
+void do_menu_inicial(void);
+void do_menu_produtos(void);
+
 void tela_inicial(void);
 void tela_sobre_projeto(void);
 void tela_sobre_desenvolvedor(void);
@@ -29,6 +34,7 @@ void tela_editar_nome_do_produto(void);
 void tela_editar_preco_do_produto(void);
 void tela_editar_quantidade(void);
 void tela_editardatafabricacao(void);
+
 void tela_deletar_produto(void);
 
 //função vendas
@@ -59,13 +65,15 @@ void tela_deletar_contato_do_fornecedor(void);
 
 // Função Principal que chama todas as outras
 int main(void) {
-    tela_inicial();
-    tela_sobre_projeto();
-    tela_sobre_desenvolvedor();
+    do_menu_inicial(); /*vai mostrar as telas menu inicial, menu produto, menu vendas, menu fornecedores e 
+                        tela sobre projeto e a tela sobre o desenvolvedor*/
+    //tela_inicial();
+    //tela_sobre_projeto();
+    //tela_sobre_desenvolvedor();
 
     //modulo produtos
-    tela_menu_produtos();
-    tela_adicionar_produto();
+    //tela_menu_produtos();
+    /*tela_adicionar_produto();
     tela_buscar_produto();
     tela_editar_produto();
     //escolha o que deseja editar
@@ -98,16 +106,90 @@ int main(void) {
     tela_editar_email();
     tela_editar_celular();
     tela_editar_endereco();
-    tela_deletar_contato_do_fornecedor();
+    tela_deletar_contato_do_fornecedor();*/
 }
 
 //Funções que serão chamadas pela função main()
+
+//função do...while do menu inicial
+
+void do_menu_inicial(void) {
+    int escolha;
+
+    do {
+        // Exibe o menu inicial
+        tela_inicial();
+        printf("===            Escolha a opção desejada: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                do_menu_produtos();
+                break;
+            case 2:
+                tela_menu_vendas();
+                break;
+            case 3:
+                tela_menu_fornecedores();
+                break;
+            case 4:
+                tela_sobre_projeto();
+                break;
+            case 5:
+                tela_sobre_desenvolvedor();
+                break;
+            case 0:
+                break;
+            default:
+                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                getchar();
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
+}
+
+void do_menu_produtos(void) {
+    int escolha;
+
+    do {
+        // Exibe o menu inicial
+        tela_menu_produtos();
+        printf("===            Escolha a opção desejada: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                tela_adicionar_produto();
+                break;
+            case 2:
+                tela_buscar_produto();
+                break;
+            case 3:
+                tela_editar_produto();
+                break;
+            case 4:
+                tela_deletar_produto();
+                break;
+            case 5:
+                tela_sobre_desenvolvedor();
+                break;
+            case 0:
+                break;
+            default:
+                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                getchar();
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
+}
+
 
 //função tela inicial
 void tela_inicial(void)
 {   system("clear||cls");
     setlocale(LC_ALL,"Portuguese_Brazil");
-    char escolha;
     printf("===============================================================================\n");
     printf("===               Universidade Federal do Rio Grande do Norte               ===\n");
     printf("===============================================================================\n");
@@ -130,13 +212,6 @@ void tela_inicial(void)
     printf("===            5. Desenvolvedor                                             ===\n");
     printf("===            0. Sair                                                      ===\n");
     printf("===                                                                         ===\n");
-    printf("===============================================================================\n");
-    printf("===            Escolha a opção desejada: ");
-    scanf("%c", &escolha);
-    getchar();
-    printf("===============================================================================\n");
-    printf("===\t\t Aperte ENTER para prosseguir:");
-    getchar();
     printf("===============================================================================\n");
 }
 
@@ -171,7 +246,7 @@ void tela_sobre_projeto(void)
     printf("===============================================================================\n");
     printf("===  Aperte ENTER para prosseguir:");
     getchar();
-    printf("===============================================================================");
+    getchar();
 }
 
 //função desenvolvedor
@@ -203,6 +278,7 @@ void tela_sobre_desenvolvedor(void)
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
+    getchar();
     printf("===============================================================================");
 }
 
@@ -210,7 +286,6 @@ void tela_sobre_desenvolvedor(void)
 void tela_menu_produtos(void)
 {   system("clear||cls");
     setlocale(LC_ALL,"Portuguese_Brazil");
-    char escolha;
     printf("===============================================================================\n");
     printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
     printf("===============================================================================\n");
@@ -228,13 +303,7 @@ void tela_menu_produtos(void)
     printf("===          0. Sair                                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===          Escolha a opção desejada: ");
-    scanf("%c", &escolha);
-    getchar();
     printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
 }
 
 void tela_adicionar_produto(void)
@@ -261,6 +330,7 @@ void tela_adicionar_produto(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -289,7 +359,9 @@ void tela_buscar_produto(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();    
     getchar();
+
     printf("===============================================================================");
 }
 void tela_editar_produto(void)
@@ -316,6 +388,7 @@ void tela_editar_produto(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -490,6 +563,7 @@ void tela_deletar_produto(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
+    getchar();
     getchar();
     printf("===============================================================================");
 }
