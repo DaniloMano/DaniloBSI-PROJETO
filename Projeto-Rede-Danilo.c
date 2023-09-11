@@ -22,6 +22,8 @@ void do_menu_produtos(void);
 void do_menu_vendas(void);
 void do_menu_fornecedores(void);
 
+//funções de telas
+
 void tela_inicial(void);
 void tela_sobre_projeto(void);
 void tela_sobre_desenvolvedor(void);
