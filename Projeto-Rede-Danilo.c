@@ -361,7 +361,7 @@ void tela_menu_produtos(void)
     printf("===          2. Buscar Produto em Estoque                                   ===\n");
     printf("===          3. Editar Dados de um Produto                                  ===\n");
     printf("===          4. Deletar Cadastro de um Produto                              ===\n");
-    printf("===          0. Sair                                                        ===\n");
+    printf("===          0. <<voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
@@ -646,7 +646,7 @@ void tela_menu_vendas(void)
     printf("===          1. Realizar Nova Venda                                         ===\n");
     printf("===          2. Pesquisar Venda no Histórico de Vendas                      ===\n");
     printf("===          3. Editar Dados de uma Venda                                   ===\n");
-    printf("===          0. Sair                                                        ===\n");
+    printf("===          0. <<voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -876,7 +876,7 @@ void tela_menu_fornecedores(void)
     printf("===          2. Pesquisar Contato de um Fornecedor                          ===\n");
     printf("===          3. Editar Dados de um Fornecedor                               ===\n");
     printf("===          4. Deletar Contato de um Fornecedor                            ===\n");
-    printf("===          0. Sair                                                        ===\n");
+    printf("===          0. <<voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
 }
