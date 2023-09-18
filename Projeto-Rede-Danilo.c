@@ -26,10 +26,8 @@ void do_menu_inicial(void);
 void do_menu_produtos(void);
 void escolha_editar_produto(void);
 
-
 void do_menu_vendas(void);
 void escolha_editar_venda(void);
-
 
 void do_menu_fornecedores(void);
 void escolha_editar_fornecedor(void);
