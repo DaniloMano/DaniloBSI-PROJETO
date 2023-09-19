@@ -1,8 +1,8 @@
 
-//switch case de edição
+//switch case de ediÃ§Ã£o
 void escolha_editar_fornecedor(void);
 
-//função fornecedores
+//funÃ§Ã£o fornecedores
 void tela_menu_fornecedores(void);
 void tela_cadastrar_fornecedor(void);
 void tela_pesquisar_fornecedor(void);
@@ -22,7 +22,7 @@ void do_menu_fornecedores(void) {
     do {
         // Exibe o menu produtos
         tela_menu_fornecedores();
-        printf("===            Escolha a opção desejada: ");
+        printf("===            Escolha a opÃ§Ã£o desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
@@ -41,7 +41,7 @@ void do_menu_fornecedores(void) {
             case 0:
                 break;
             default:
-                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                printf("===            OpÃ§Ã£o invÃ¡lida. Tente novamente.                             ===\n");
                 getchar();
                 getchar();
                 break;
@@ -56,7 +56,7 @@ void escolha_editar_fornecedor(void)
         // Exibe o menu produtos
         tela_editar_contato_do_fornecedor();
         tela_escolha_editar_fornecedores();
-        printf("===            Escolha a opção desejada: ");
+        printf("===            Escolha a opÃ§Ã£o desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
@@ -75,7 +75,7 @@ void escolha_editar_fornecedor(void)
             case 0:
                 break;
             default:
-                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                printf("===            OpÃ§Ã£o invÃ¡lida. Tente novamente.                             ===\n");
                 getchar();
                 getchar();
                 break;
@@ -83,7 +83,7 @@ void escolha_editar_fornecedor(void)
     } while (escolha != 0);
 }
 
-//funções fornecedores
+//funÃ§Ãµes fornecedores
 void tela_menu_fornecedores(void)
 {   system("clear||cls");
     setlocale(LC_ALL,"Portuguese_Brazil");
@@ -92,7 +92,7 @@ void tela_menu_fornecedores(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                      |Fábrica de Redes de Dormir|                       ===\n");
+    printf("===                      |FÃ¡brica de Redes de Dormir|                       ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -115,17 +115,17 @@ void tela_cadastrar_fornecedor(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                   |Cadastrar Novo Fornecedor|                           ===\n");
     printf("===                                                                         ===\n");
     printf("===          Nome do Fornecedor:                                            ===\n");
-    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas NÃºmeros):                                      ===\n");
     printf("===          E-mail:                                                        ===\n");
     printf("===          Celular:                                                       ===\n");
-    printf("===          Endereço:                                                      ===\n");
+    printf("===          EndereÃ§o:                                                      ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
@@ -144,16 +144,16 @@ void tela_pesquisar_fornecedor(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                  |Pesquisar Fornecedor|                                 ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o CPF/CNPJ do Fornecedor que você deseja Pesquisar]      ===\n");
+    printf("===        [Digite o CPF/CNPJ do Fornecedor que vocÃª deseja Pesquisar]      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas NÃºmeros):                                      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -172,16 +172,16 @@ void tela_editar_contato_do_fornecedor(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                  |Editar Dados do Fornecedor|                           ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o CPF/CNPJ do Fornecedor que você deseja Editar]         ===\n");
+    printf("===        [Digite o CPF/CNPJ do Fornecedor que vocÃª deseja Editar]         ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas NÃºmeros):                                      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -202,7 +202,7 @@ void tela_escolha_editar_fornecedores(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                      |Fábrica de Redes de Dormir|                       ===\n");
+    printf("===                      |FÃ¡brica de Redes de Dormir|                       ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -211,7 +211,7 @@ void tela_escolha_editar_fornecedores(void)
     printf("===          1. Nome                                                        ===\n");
     printf("===          2. E-Mail                                                      ===\n");
     printf("===          3. Celular                                                     ===\n");
-    printf("===          4. Endereço                                                    ===\n");
+    printf("===          4. EndereÃ§o                                                    ===\n");
     printf("===          0. <<Voltar>>                                                  ===\n");
     printf("===-------------------------------------------------------------------------===\n");
 }
@@ -226,13 +226,13 @@ void tela_editar_nome_fornecedor(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                  |Editar Nome do Fornecedor|                            ===\n");
     printf("===                                                                         ===\n");
-    printf("=== [Digite o novo nome do fornecedor (ou 'cancel' para cancelar a edição)] ===\n");
+    printf("=== [Digite o novo nome do fornecedor (ou 'cancel' para cancelar a ediÃ§Ã£o)] ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Nome do Fornecedor:                                          ===\n");
@@ -255,13 +255,13 @@ void tela_editar_email(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                  |Editar E-Mail do Fornecedor|                          ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o novo E-Mail(ou 'cancel' para cancelar a edição)]       ===\n");
+    printf("===        [Digite o novo E-Mail(ou 'cancel' para cancelar a ediÃ§Ã£o)]       ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo E-Mail do Fornecedor:                                        ===\n");
@@ -284,13 +284,13 @@ void tela_editar_celular(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                  |Editar Celular do Fornecedor|                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o novo Celular(ou 'cancel' para cancelar a edição)]      ===\n");
+    printf("===        [Digite o novo Celular(ou 'cancel' para cancelar a ediÃ§Ã£o)]      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Celular do Fornecedor:                                       ===\n");
@@ -313,16 +313,16 @@ void tela_editar_endereco(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                 |Editar Endereço do Fornecedor|                         ===\n");
+    printf("===                 |Editar EndereÃ§o do Fornecedor|                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      [Digite o novo Endereço (ou 'cancel' para cancelar a edição)]      ===\n");
+    printf("===      [Digite o novo EndereÃ§o (ou 'cancel' para cancelar a ediÃ§Ã£o)]      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===       Novo Endereço:                                                    ===\n");
+    printf("===       Novo EndereÃ§o:                                                    ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -342,16 +342,16 @@ void tela_deletar_contato_do_fornecedor(void)
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |FÃ¡brica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                |Deletar Contato de um Fornecedor|                       ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o CPF/CNPJ do Fornecedor que você deseja Deletar]        ===\n");
+    printf("===        [Digite o CPF/CNPJ do Fornecedor que vocÃª deseja Deletar]        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas Números):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas NÃºmeros):                                      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");

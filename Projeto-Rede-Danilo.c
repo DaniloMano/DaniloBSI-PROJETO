@@ -1,11 +1,11 @@
 //===============================================================================
 //===               Universidade Federal do Rio Grande do Norte               ===
 //===============================================================================
-//===                   Centro de Ensino Superior do SeridÛ                   ===
-//===                Departamento de ComputaÁ„o e Tecnologia                  ===
-//===                   Disciplina DCT1106 -- ProgramaÁ„o                     ===
+//===                   Centro de Ensino Superior do Serid√≥                   ===
+//===                Departamento de Computa√ß√£o e Tecnologia                  ===
+//===                   Disciplina DCT1106 -- Programa√ß√£o                     ===
 //===-------------------------------------------------------------------------===
-//===      Projeto Sistema de Gest„o para uma F·brica de Redes de Dormir      ===
+//===      Projeto Sistema de Gest√£o para uma F√°brica de Redes de Dormir      ===
 //===============================================================================
 //===             Developed by @DaniloMano -- since Aug, 2023                 ===
 //===============================================================================
@@ -18,7 +18,7 @@
 #include "modulovendas.h"
 #include "modulofornecedor.h"
 
-// FunÁıes
+// Fun√ß√µes
 //switchcases
 
 void do_menu_inicial(void);
@@ -26,13 +26,15 @@ void do_menu_inicial(void);
 void do_menu_produtos(void);
 void escolha_editar_produto(void);
 
+
 void do_menu_vendas(void);
 void escolha_editar_venda(void);
+
 
 void do_menu_fornecedores(void);
 void escolha_editar_fornecedor(void);
 
-// FunÁ„o Principal que chama todas as outras
+// Fun√ß√£o Principal que chama todas as outras
 int main(void) {
     do_menu_inicial(); /*vai mostrar as telas menu inicial, menu produto, menu vendas, menu fornecedores e 
                         tela sobre projeto e a tela sobre o desenvolvedor*/
@@ -40,9 +42,9 @@ int main(void) {
     return 0;
 }
 
-//FunÁıes que ser„o chamadas pela funÁ„o main()
+//Fun√ß√µes que ser√£o chamadas pela fun√ß√£o main()
 
-//funÁ„o do...while do menu inicial
+//fun√ß√£o do...while do menu inicial
 
 void do_menu_inicial(void) {
     int escolha;
@@ -50,7 +52,7 @@ void do_menu_inicial(void) {
     do {
         // Exibe o menu inicial
         tela_inicial();
-        printf("===            Escolha a opÁ„o desejada: ");
+        printf("===            Escolha a op√ß√£o desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
@@ -72,7 +74,7 @@ void do_menu_inicial(void) {
             case 0:
                 break;
             default:
-                printf("===            OpÁ„o inv·lida. Tente novamente.                             ===\n");
+                printf("===            Op√ß√£o inv√°lida. Tente novamente.                             ===\n");
                 getchar();
                 getchar();
                 break;
