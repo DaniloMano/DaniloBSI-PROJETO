@@ -12,7 +12,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 #include "teladev.h"
 #include "moduloproduto.h"
 #include "modulovendas.h"
@@ -52,7 +51,7 @@ void do_menu_inicial(void) {
     do {
         // Exibe o menu inicial
         tela_inicial();
-        printf("===            Escolha a opção desejada: ");
+        printf("===            Escolha a opcao desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
@@ -74,7 +73,7 @@ void do_menu_inicial(void) {
             case 0:
                 break;
             default:
-                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                printf("===            Opcao invalida. Tente novamente.                             ===\n");
                 getchar();
                 getchar();
                 break;

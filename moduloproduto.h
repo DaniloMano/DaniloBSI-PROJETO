@@ -13,15 +13,15 @@ void tela_editardatafabricacao(void);
 void tela_deletar_produto(void);
 
 //funções produtos
+//telas
 void tela_menu_produtos(void)
 {   system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                      |Fábrica de Redes de Dormir|                       ===\n");
+    printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        >>>|MENU PRODUTOS|<<<                            ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -39,23 +39,22 @@ void tela_menu_produtos(void)
 void tela_adicionar_produto(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      |Adicionar Novo Produto|                           ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Código (Apenas Números):                                       ===\n");
+    printf("===          Codigo (Apenas Numeros):                                       ===\n");
     printf("===          Nome do Produto:                                               ===\n");
-    printf("===          Preço do Produto:                                              ===\n");
+    printf("===          Preco do Produto:                                              ===\n");
     printf("===          Quantidade:                                                    ===\n");
-    printf("===          Data de Fabricação:                                            ===\n");
+    printf("===          Data de Fabricacao:                                            ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
@@ -68,22 +67,21 @@ void tela_adicionar_produto(void)
 void tela_buscar_produto(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        |Buscar Produto|                                 ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o código do produto que você deseja Pesquisar]           ===\n");
+    printf("===        [Digite o codigo do produto que voce deseja Pesquisar]           ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Código(Apenas Números):                                        ===\n");
+    printf("===          Codigo (Apenas Numeros):                                       ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -97,22 +95,21 @@ void tela_buscar_produto(void)
 void tela_editar_produto(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        |Editar Produto|                                 ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o código do produto que você deseja Editar]              ===\n");
+    printf("===        [Digite o codigo do produto que voce deseja Editar]              ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Código(Apenas Números):                                        ===\n");
+    printf("===          Codigo (Apenas Numeros):                                       ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -128,22 +125,21 @@ void tela_editar_produto(void)
 void tela_escolha_editar_produto(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      |O que deseja editar?|                             ===\n");
     printf("===                                                                         ===\n");
     printf("===          1. Nome do Produto                                             ===\n");
-    printf("===          2. Preço do Produto                                            ===\n");
+    printf("===          2. Preco do Produto                                            ===\n");
     printf("===          3. Quantidade                                                  ===\n");
-    printf("===          4. Data de Fabricação                                          ===\n");
+    printf("===          4. Data de Fabricacao                                          ===\n");
     printf("===          0. <<Voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -153,19 +149,18 @@ void tela_escolha_editar_produto(void)
 void tela_editar_nome_do_produto(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                    |Editar Nome do Produto|                             ===\n");
     printf("===                                                                         ===\n");
-    printf("===   [Digite o novo nome do produto (ou 'cancel' para cancelar a edição)]  ===\n");
+    printf("===   [Digite o novo nome do produto (ou 'cancel' para cancelar a edicao)]  ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===          Novo Nome do Produto:                                          ===\n");
@@ -182,22 +177,21 @@ void tela_editar_nome_do_produto(void)
 void tela_editar_preco_do_produto(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                    |Editar preço do Produto|                            ===\n");
+    printf("===                    |Editar preco do Produto|                            ===\n");
     printf("===                                                                         ===\n");
-    printf("===   [Digite o novo preço do produto (ou 'cancel' para cancelar a edição)] ===\n");
+    printf("===   [Digite o novo preco do produto (ou 'cancel' para cancelar a edicao)] ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      Novo Preço (apenas números):                                       ===\n");
+    printf("===      Novo Preco (apenas numeros):                                       ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -211,22 +205,21 @@ void tela_editar_preco_do_produto(void)
 void tela_editar_quantidade(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                  |Editar quantidade do Produto|                         ===\n");
     printf("===                                                                         ===\n");
-    printf("=== [Digite a nova quantia do produto (ou 'cancel' para cancelar a edição)] ===\n");
+    printf("=== [Digite a nova quantia do produto (ou 'cancel' para cancelar a edicao)] ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      Nova Quantia (apenas números):                                     ===\n");
+    printf("===      Nova Quantia (apenas numeros):                                     ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -240,22 +233,21 @@ void tela_editar_quantidade(void)
 void tela_editardatafabricacao(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===               |Editar data de fabricação do Produto|                    ===\n");
+    printf("===               |Editar data de fabricacao do Produto|                    ===\n");
     printf("===                                                                         ===\n");
-    printf("===      [Digite a nova data (ou 'cancel' para cancelar a edição)]          ===\n");
+    printf("===      [Digite a nova data (ou 'cancel' para cancelar a edicao)]          ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      Nova Data (apenas números):                                        ===\n");
+    printf("===      Nova Data (apenas numeros):                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -269,22 +261,21 @@ void tela_editardatafabricacao(void)
 void tela_deletar_produto(void)
 {
     system("clear||cls");
-    setlocale(LC_ALL,"Portuguese_Brazil");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
     printf("===============================================================================\n");
     printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                   |Fábrica de Redes de Dormir|                          ===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                        |Deletar Produto|                                ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o código do produto que você deseja Deletar]             ===\n");
+    printf("===        [Digite o codigo do produto que voce deseja Deletar]             ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Código(Apenas Números):                                        ===\n");
+    printf("===          Codigo(Apenas Numeros):                                        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -294,7 +285,7 @@ void tela_deletar_produto(void)
     getchar();
     printf("===============================================================================");
 }
-
+//navegação entre "menus"
 void escolha_editar_produto(void)
 {
     int escolha;
@@ -303,7 +294,7 @@ void escolha_editar_produto(void)
         // Exibe o menu produtos
         tela_editar_produto();
         tela_escolha_editar_produto();
-        printf("===            Escolha a opção desejada: ");
+        printf("===            Escolha a opcao desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
@@ -322,7 +313,7 @@ void escolha_editar_produto(void)
             case 0:
                 break;
             default:
-                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                printf("===            Opção invalida. Tente novamente.                             ===\n");
                 getchar();
                 getchar();
                 break;
@@ -336,7 +327,7 @@ void do_menu_produtos(void) {
     do {
         // Exibe o menu produtos
         tela_menu_produtos();
-        printf("===            Escolha a opção desejada: ");
+        printf("===            Escolha a opcao desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
@@ -355,7 +346,7 @@ void do_menu_produtos(void) {
             case 0:
                 break;
             default:
-                printf("===            Opção inválida. Tente novamente.                             ===\n");
+                printf("===            Opção invalida. Tente novamente.                             ===\n");
                 getchar();
                 getchar();
                 break;
