@@ -15,6 +15,7 @@
 #include "teladev.h"
 #include "moduloproduto.h"
 #include "modulovendas.h"
+#include "modulocliente.h"
 #include "modulofornecedor.h"
 
 // Funções
@@ -62,13 +63,13 @@ void do_menu_inicial(void) {
                 do_menu_vendas();
                 break;
             case 3:
-                do_menu_fornecedores();
+                do_menu_cliente();
                 break;
             case 4:
-                tela_sobre_projeto();
+                do_menu_fornecedores();
                 break;
             case 5:
-                tela_sobre_desenvolvedor();
+                do_menu_apresentacao();
                 break;
             case 0:
                 break;
