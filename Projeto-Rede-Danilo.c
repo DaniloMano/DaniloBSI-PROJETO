@@ -36,8 +36,7 @@ void escolha_editar_fornecedor(void);
 
 // Função Principal que chama todas as outras
 int main(void) {
-    do_menu_inicial(); /*vai mostrar as telas menu inicial, menu produto, menu vendas, menu fornecedores e 
-                        tela sobre projeto e a tela sobre o desenvolvedor*/
+    do_menu_inicial();
     
     return 0;
 }
