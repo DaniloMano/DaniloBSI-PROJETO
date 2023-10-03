@@ -1,5 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utilidadesprojetodanilo.h"
+//variaveis
+char nomefornecedor[51];
+char cpf_fornecedor[15];
+char email_fornecedor[51];
+char celular_fornecedor[16];
+char endereco_fornecedor[51];
+
 //switchcase
 void escolha_editar_fornecedor(void);
 
@@ -55,16 +63,21 @@ void tela_cadastrar_fornecedor(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                   |Cadastrar Novo Fornecedor|                           ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Nome do Fornecedor:                                            ===\n");
-    printf("===          CPF/CNPJ(Apenas Numeros):                                      ===\n");
-    printf("===          E-mail:                                                        ===\n");
-    printf("===          Celular:                                                       ===\n");
-    printf("===          Endereco:                                                      ===\n");
+    printf("===          Nome do Fornecedor: ");
+    getchar();
+    ver_nome(nomefornecedor);
+    printf("===          CPF/CNPJ(Apenas Numeros): ");
+    ver_cpf(cpf_fornecedor);//no momento so tenho valida cpf
+    printf("===          E-mail: ");
+    ver_email(email_fornecedor);
+    printf("===          Celular: ");
+    ver_celular(celular_fornecedor);
+    printf("===          Endereco: ");
+    ver_nome(endereco_fornecedor);
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -86,13 +99,14 @@ void tela_pesquisar_fornecedor(void)
     printf("===        [Digite o CPF/CNPJ do Fornecedor que voce deseja Pesquisar]      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas Numeros):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas Numeros): ");
+    getchar();
+    fgets(cpf_fornecedor, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -113,13 +127,14 @@ void tela_editar_contato_do_fornecedor(void)
     printf("===        [Digite o CPF/CNPJ do Fornecedor que voce deseja Editar]         ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas Numeros):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas Numeros): ");
+    getchar();
+    fgets(cpf_fornecedor, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -165,13 +180,14 @@ void tela_editar_nome_fornecedor(void)
     printf("=== [Digite o novo nome do fornecedor (ou 'cancel' para cancelar a edicao)] ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===       Novo Nome do Fornecedor:                                          ===\n");
+    printf("===       Novo Nome do Fornecedor: ");
+    fgets(nomefornecedor, 51, stdin);
+    ver_nome(nomefornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -193,13 +209,15 @@ void tela_editar_email(void)
     printf("===        [Digite o novo E-Mail(ou 'cancel' para cancelar a edicao)]       ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===       Novo E-Mail do Fornecedor:                                        ===\n");
+    printf("===       Novo E-Mail do Fornecedor: ");
+    getchar();
+    fgets(email_fornecedor, 51, stdin);
+    ver_email(email_fornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -221,13 +239,14 @@ void tela_editar_celular(void)
     printf("===        [Digite o novo Celular(ou 'cancel' para cancelar a edicao)]      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===       Novo Celular do Fornecedor:                                       ===\n");
+    printf("===       Novo Celular do Fornecedor: ");
+    fgets(celular_fornecedor, 16, stdin);
+    ver_celular(celular_fornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -249,13 +268,14 @@ void tela_editar_endereco(void)
     printf("===      [Digite o novo Endereco (ou 'cancel' para cancelar a edicao)]      ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===       Novo Endereco:                                                    ===\n");
+    printf("===       Novo Endereco: ");
+    fgets(endereco_fornecedor, 51, stdin);
+    ver_nome(endereco_fornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -277,13 +297,13 @@ void tela_deletar_contato_do_fornecedor(void)
     printf("===        [Digite o CPF/CNPJ do Fornecedor que voce deseja Deletar]        ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          CPF/CNPJ(Apenas Numeros):                                      ===\n");
+    printf("===          CPF/CNPJ(Apenas Numeros): ");
+    fgets(cpf_fornecedor, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }

@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "utilidadesprojetodanilo.h"
 // função produtos
 void tela_menu_produtos(void);
 void tela_adicionar_produto(void);
@@ -11,6 +14,11 @@ void tela_editar_quantidade(void);
 void tela_editardatafabricacao(void);
 
 void tela_deletar_produto(void);
+//variaveis
+  char codigoproduto[10];
+  char nomeproduto[51];
+  char preco_produto[10];
+  char quantia_produto[10];
 
 //funções produtos
 //telas
@@ -50,16 +58,23 @@ void tela_adicionar_produto(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      |Adicionar Novo Produto|                           ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Codigo (Apenas Numeros):                                       ===\n");
-    printf("===          Nome do Produto:                                               ===\n");
-    printf("===          Preco do Produto:                                              ===\n");
-    printf("===          Quantidade:                                                    ===\n");
-    printf("===          Data de Fabricacao:                                            ===\n");
+    printf("===          Codigo (Apenas Numeros): ");
+    getchar();
+    ver_numero(codigoproduto);
+    printf("===          Nome do Produto: ");
+    getchar();
+    ver_nome(nomeproduto);
+    printf("===          Preco do Produto: ");
+    getchar();
+    ver_numero(preco_produto);
+    printf("===          Quantidade: ");
+    getchar();
+    ver_numero(quantia_produto);
+    //printf("===          Data de Fabricacao:                                            ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -81,15 +96,15 @@ void tela_buscar_produto(void)
     printf("===        [Digite o codigo do produto que voce deseja Pesquisar]           ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Codigo (Apenas Numeros):                                       ===\n");
+    printf("===          Codigo (Apenas Numeros): ");
+    getchar();
+    fgets(codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();    
     getchar();
-
     printf("===============================================================================");
 }
 void tela_editar_produto(void)
@@ -109,13 +124,14 @@ void tela_editar_produto(void)
     printf("===        [Digite o codigo do produto que voce deseja Editar]              ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Codigo (Apenas Numeros):                                       ===\n");
+    printf("===          Codigo (Apenas Numeros): ");
+    getchar();
+    fgets(codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -139,7 +155,7 @@ void tela_escolha_editar_produto(void)
     printf("===          1. Nome do Produto                                             ===\n");
     printf("===          2. Preco do Produto                                            ===\n");
     printf("===          3. Quantidade                                                  ===\n");
-    printf("===          4. Data de Fabricacao                                          ===\n");
+    //printf("===          4. Data de Fabricacao                                          ===\n");
     printf("===          0. <<Voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -163,13 +179,14 @@ void tela_editar_nome_do_produto(void)
     printf("===   [Digite o novo nome do produto (ou 'cancel' para cancelar a edicao)]  ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Novo Nome do Produto:                                          ===\n");
+    printf("===          Novo Nome do Produto: ");
+    getchar();
+    fgets(nomeproduto, 51, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -191,13 +208,14 @@ void tela_editar_preco_do_produto(void)
     printf("===   [Digite o novo preco do produto (ou 'cancel' para cancelar a edicao)] ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      Novo Preco (apenas numeros):                                       ===\n");
+    printf("===      Novo Preco (apenas numeros): ");
+    getchar();
+    fgets(preco_produto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -219,18 +237,19 @@ void tela_editar_quantidade(void)
     printf("=== [Digite a nova quantia do produto (ou 'cancel' para cancelar a edicao)] ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      Nova Quantia (apenas numeros):                                     ===\n");
+    printf("===      Nova Quantia (apenas numeros): ");
+    getchar();
+    fgets(quantia_produto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
-    getchar();
     printf("===============================================================================");
 }
 
-void tela_editardatafabricacao(void)
+/*void tela_editardatafabricacao(void)
 {
     system("clear||cls");
     printf("===============================================================================\n");
@@ -247,7 +266,9 @@ void tela_editardatafabricacao(void)
     printf("===      [Digite a nova data (ou 'cancel' para cancelar a edicao)]          ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      Nova Data (apenas numeros):                                        ===\n");
+    printf("===      Nova Data (apenas numeros): ");
+    getchar();
+    fgets(codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -256,7 +277,7 @@ void tela_editardatafabricacao(void)
     getchar();
     getchar();
     printf("===============================================================================");
-}
+}*/
 
 void tela_deletar_produto(void)
 {
@@ -275,13 +296,14 @@ void tela_deletar_produto(void)
     printf("===        [Digite o codigo do produto que voce deseja Deletar]             ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Codigo(Apenas Numeros):                                        ===\n");
+    printf("===          Codigo(Apenas Numeros): ");
+    getchar();
+    fgets(codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
-    getchar();
     getchar();
     printf("===============================================================================");
 }
@@ -307,9 +329,9 @@ void escolha_editar_produto(void)
             case 3:
                 tela_editar_quantidade();
                 break;
-            case 4:
+            /*case 4:
                 tela_editardatafabricacao();
-                break;
+                break;*/
             case 0:
                 break;
             default:
