@@ -72,7 +72,7 @@ int tirapontohifen_cpf(char*);
 
 //funções para ler e validar cpf
 void ver_cpf(char* cpf) {
-    int c;
+    
     do {
         fgets(cpf, 15, stdin);
         limpa_enter(cpf);

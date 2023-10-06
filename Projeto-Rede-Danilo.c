@@ -17,6 +17,7 @@
 #include "modulovendas.h"
 #include "modulocliente.h"
 #include "modulofornecedor.h"
+#include "utilidadesprojetodanilo.h"
 
 // Funções
 //switchcases
