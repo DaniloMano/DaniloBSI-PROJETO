@@ -12,7 +12,7 @@ void ver_email(char *);
 void ver_celular(char *);
 // função ler numero
 void ver_numero(char *);
-
+//seguindo a mesma logica do codigo exemplo de flavius
 // ler nome
 void ver_nome(char *nome) {
   fgets(nome, 51, stdin);
@@ -25,7 +25,7 @@ void ver_nome(char *nome) {
     fgets(nome, 51, stdin);
   }
 }
-
+//seguindo a mesma logica do codigo exemplo de flavius
 // função para ler cpf
 void ver_cpf(char *cpf) {
   do {
@@ -43,6 +43,7 @@ void ver_cpf(char *cpf) {
   } while (!valida_cpf(cpf));
   getchar();
 }
+//seguindo a mesma logica do codigo exemplo de flavius
 // ler email
 void ver_email(char *email) {
   fgets(email, 51, stdin);
@@ -59,6 +60,7 @@ void ver_email(char *email) {
     fgets(email, 51, stdin);
   }
 }
+//seguindo a mesma logica do codigo exemplo de flavius
 // ler celular
 void ver_celular(char *celular) {
   fgets(celular, 16, stdin);
@@ -73,6 +75,7 @@ void ver_celular(char *celular) {
 }
 
 // VALIDA APENAS NUMERO
+//seguindo a mesma logica do codigo exemplo de flavius
 // ler numero
 void ver_numero(char *numero) {
   fgets(numero, 10, stdin);

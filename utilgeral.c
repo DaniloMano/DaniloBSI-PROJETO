@@ -14,14 +14,14 @@ int valida_celular(char*);
 int eh_numerovalido(char);
 int valida_numero(char*);
 int eh_numero(char);
-//essa é uma função que será útil em mais de uma função
+//essa é uma função que será útil em mais de uma função (fiz com a ajuda do chatgpt)
 void limpa_enter(char* str) {//tive uma ajudinha do chat gpt
     int tamanho = strlen(str);
     if (tamanho > 0 && str[tamanho - 1] == '\n') {
         str[tamanho - 1] = '\0'; // Substitui o '\n' pelo caractere nulo '\0'
     }
 }
-
+//seguindo a mesma logica do codigo exemplo de flavius
 //a seguir vem funções que conferem letra por letra do nome e confere se ta tudo certinho:
 int valida_nome(char* nome) {
   //a variavel abaixo serve para ver o tamanho do nome
@@ -121,7 +121,7 @@ int tirapontohifen_cpf(char* cpf){//obtive ajuda do chatgpt para implementar ess
 }
 
 //funções para ler e validar email
-
+//seguindo a mesma logica do codigo exemplo de flavius
 int valida_email(char* email) {
   int tamanho;
   validararrobaeponto(email);
@@ -149,7 +149,8 @@ int eh_charvalido(char c) {//seguindo a mesma logica do codigo base
     return 0;
   }  
 }
-
+//seguindo a mesma logica do codigo exemplo de flavius
+//precisei da ajuda do chatgpt nessa de @ e .
 int validararrobaeponto(char* email) {//aqui vamos usar o strchr para verificar a posição desses 2 caracteres e usaremos o if para retornar 1 caso o email realmente tenha exatos 1 @ e 1'.', em que obrigatoriamente venha antes o @ e em algum momento depois o "."
     char *arroba = strchr(email, '@');
     char *ponto = strchr(email, '.');
@@ -175,7 +176,7 @@ int validararrobaeponto(char* email) {//aqui vamos usar o strchr para verificar 
 
 //funções para validar celular de forma simplificada
 //funções para ler e validar email
-
+//seguindo a mesma logica do codigo exemplo de flavius
 int valida_celular(char* celular) {
     // confere se, dentre os 16 espaços de caractere (enter incluso), ao menos 11 deles são números
     int tamanho = strlen(celular);
@@ -220,7 +221,7 @@ int eh_numerovalido(char c) {//seguindo a mesma logica do codigo base
 
 //funções para validar celular de forma simplificada
 //funções para ler e validar email
-
+//seguindo a mesma logica do codigo exemplo de flavius
 int valida_numero(char* numero) {
   int tam;
   
@@ -234,7 +235,7 @@ int valida_numero(char* numero) {
 }
 
 
-int eh_numero(char c) {//seguindo a mesma logica do codigo base
+int eh_numero(char c) {//seguindo a mesma logica do codigo exemplo de flavius
   if (c >= '0' && c <= '9') {
     return 1;
   } else if (c == '.') {
