@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
 //variaveis que serão usadas aqui
-char codigoproduto[10];
-char nomeproduto[51];
-char cpf[15];
-char quantia_produto[10];
-
-//switchcase
-void escolha_editar_venda(void);
-void do_menu_vendas(void);
+  char codigoproduto[10];
+  char pagamento[51];
+  char cpf[15];
+  char quantia_produto[10];
 
 //função vendas
 void tela_menu_vendas(void);
@@ -65,14 +62,10 @@ void tela_realizar_venda(void)
     getchar();
     fgets(codigoproduto, 10, stdin);
     printf("===          Quantidade a ser Vendida: ");
-    getchar();
-    fgets(quantia_produto, 10, stdin);
+    ver_numero(quantia_produto);
     printf("===          Forma de Pagamento: ");
-    getchar();
-    fgets(nomeproduto, 51, stdin);
+    fgets(pagamento, 51, stdin);
     printf("===          CPF/CNPJ do Cliente: ");
-    getchar();
-    fgets(cpf, 15, stdin);
     ver_cpf(cpf);
     //printf("===          Data da Venda:                                                 ===\n");
     printf("===                                                                         ===\n");
@@ -186,7 +179,6 @@ void tela_editar_quantidade_vendida(void)
     printf("===                                                                         ===\n");
     printf("===      Nova Quantia (apenas numeros): ");
     getchar();
-    fgets(quantia_produto, 10, stdin);
     ver_numero(quantia_produto);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
@@ -215,8 +207,7 @@ void tela_editar_forma_de_pagamento(void)
     printf("===                                                                         ===\n");
     printf("===      Nova Forma de Pagamento (apenas numeros): ");
     getchar();
-    fgets(nomeproduto, 51, stdin);
-    ver_nome(nomeproduto);
+    ver_nome(pagamento);
     printf("===                                                                         ===\n");
     printf("===    (Ex.: 1- A vista/ 2- Debito/ 3- Credito/ 4- Parcelar em nX)          ===\n");
     printf("===                                                                         ===\n");

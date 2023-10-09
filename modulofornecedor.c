@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
 //variaveis
 char nomefornecedor[51];
@@ -9,7 +10,6 @@ char celular_fornecedor[16];
 char endereco_fornecedor[51];
 
 //switchcase
-void do_menu_fornecedores(void);
 void escolha_editar_fornecedor(void);
 
 

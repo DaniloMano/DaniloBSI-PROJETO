@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
-//switchcases
-void do_menu_produtos(void);
-void escolha_editar_produto(void);
-
 // função produtos
 void tela_menu_produtos(void);
 void tela_adicionar_produto(void);
@@ -15,14 +12,14 @@ void tela_escolha_editar_produto(void);
 void tela_editar_nome_do_produto(void);
 void tela_editar_preco_do_produto(void);
 void tela_editar_quantidade(void);
-//void tela_editardatafabricacao(void);
+void tela_editardatafabricacao(void);
 
 void tela_deletar_produto(void);
 //variaveis
-char codigoproduto[10];
-char nomeproduto[51];
-char preco_produto[10];
-char quantia_produto[10];
+  char codigoproduto[10];
+  char nomeproduto[51];
+  char preco_produto[10];
+  char quantia_produto[10];
 
 //funções produtos
 //telas
@@ -66,13 +63,11 @@ void tela_adicionar_produto(void)
     getchar();
     ver_numero(codigoproduto);
     printf("===          Nome do Produto: ");
-    getchar();
     ver_nome(nomeproduto);
     printf("===          Preco do Produto: ");
-    getchar();
     ver_numero(preco_produto);
     printf("===          Quantidade: ");
-    getchar();
+    
     ver_numero(quantia_produto);
     //printf("===          Data de Fabricacao:                                            ===\n");
     printf("===                                                                         ===\n");
@@ -185,7 +180,7 @@ void tela_editar_nome_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Novo Nome do Produto: ");
     getchar();
-    fgets(nomeproduto, 51, stdin);
+    ver_nome(nomeproduto);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -214,7 +209,7 @@ void tela_editar_preco_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===      Novo Preco (apenas numeros): ");
     getchar();
-    fgets(preco_produto, 10, stdin);
+    ver_numero(preco_produto);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -243,7 +238,7 @@ void tela_editar_quantidade(void)
     printf("===                                                                         ===\n");
     printf("===      Nova Quantia (apenas numeros): ");
     getchar();
-    fgets(quantia_produto, 10, stdin);
+    ver_numero(quantia_produto);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
+
 //variaveis
 char nomecliente[51];
 char cpf_cliente[15];
