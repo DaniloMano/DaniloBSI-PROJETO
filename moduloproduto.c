@@ -2,29 +2,13 @@
 #include <stdlib.h>
 #include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
-// função produtos
-void tela_menu_produtos(void);
-void tela_adicionar_produto(void);
-void tela_buscar_produto(void);
-void tela_editar_produto(void);
-//escolha do que deseja editar
-void tela_escolha_editar_produto(void);
-void tela_editar_nome_do_produto(void);
-void tela_editar_preco_do_produto(void);
-void tela_editar_quantidade(void);
-void tela_editardatafabricacao(void);
-
-void tela_deletar_produto(void);
-//variaveis
-  char codigoproduto[10];
-  char nomeproduto[51];
-  char preco_produto[10];
-  char quantia_produto[10];
-
+#include "moduloproduto.h"
 //funções produtos
+struct produto rede;
 //telas
 void tela_menu_produtos(void)
-{   system("clear||cls");
+{   
+    system("clear||cls");
     printf("===============================================================================\n");
     printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
     printf("===============================================================================\n");
@@ -47,6 +31,7 @@ void tela_menu_produtos(void)
 
 void tela_adicionar_produto(void)
 {
+
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -61,14 +46,13 @@ void tela_adicionar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    ver_numero(codigoproduto);
+    ver_numero(rede.codigoproduto);
     printf("===          Nome do Produto: ");
-    ver_nome(nomeproduto);
+    ver_nome(rede.nomeproduto);
     printf("===          Preco do Produto: ");
-    ver_numero(preco_produto);
+    ver_numero(rede.preco_produto);
     printf("===          Quantidade: ");
-    
-    ver_numero(quantia_produto);
+    ver_numero(rede.quantia_produto);
     //printf("===          Data de Fabricacao:                                            ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -97,7 +81,7 @@ void tela_buscar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    fgets(codigoproduto, 10, stdin);
+    fgets(rede.codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -125,7 +109,7 @@ void tela_editar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    fgets(codigoproduto, 10, stdin);
+    fgets(rede.codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -158,7 +142,7 @@ void tela_escolha_editar_produto(void)
     printf("===          0. <<Voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    
+
 }
 
 void tela_editar_nome_do_produto(void)
@@ -180,7 +164,7 @@ void tela_editar_nome_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Novo Nome do Produto: ");
     getchar();
-    ver_nome(nomeproduto);
+    fgets(rede.nomeproduto, 51, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -209,7 +193,7 @@ void tela_editar_preco_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===      Novo Preco (apenas numeros): ");
     getchar();
-    ver_numero(preco_produto);
+    fgets(rede.preco_produto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -238,7 +222,7 @@ void tela_editar_quantidade(void)
     printf("===                                                                         ===\n");
     printf("===      Nova Quantia (apenas numeros): ");
     getchar();
-    ver_numero(quantia_produto);
+    fgets(rede.quantia_produto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -297,7 +281,7 @@ void tela_deletar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo(Apenas Numeros): ");
     getchar();
-    fgets(codigoproduto, 10, stdin);
+    fgets(rede.codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");

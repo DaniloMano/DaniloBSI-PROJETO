@@ -1,9 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
-//switchcase
-void escolha_editar_venda(void);
-void do_menu_vendas(void);
+//tipo abstrato
+struct vendas {
+char codigoproduto[10];
+char forma_pagamento[51];
+char cpf[15];
+char quantia_vendida[10];
+};
+//o struct acima põe nos arquivo .h
 
 //função vendas
 void tela_menu_vendas(void);

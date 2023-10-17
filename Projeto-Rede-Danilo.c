@@ -12,7 +12,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//bibliotecas e funções de danilo
 #include "teladev.h"
 #include "moduloproduto.h"
 #include "modulovendas.h"

@@ -2,32 +2,10 @@
 #include <stdlib.h>
 #include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
-
-//variaveis
-char nomecliente[51];
-char cpf_cliente[15];
-char email_cliente[51];
-char celular_cliente[16];
-//switchcase
-void do_menu_cliente(void);
-void escolha_editar_cliente(void);
-
-
-//função clientes
-void tela_menu_cliente(void);
-void tela_cadastrar_cliente(void);
-void tela_pesquisar_cliente(void);
-void tela_editar_contato_do_cliente(void);
-//escolha o que deseja editar
-void tela_escolha_editar_cliente(void);
-void tela_editar_nome_cliente(void);
-void tela_editar_email_cliente(void);
-void tela_editar_celular_cliente(void);
-//void tela_editar_endereco_cliente(void);
-
-//void tela_deletar_contato_do_cliente(void);
+#include "modulocliente.h"
 
 //funções sobre clientes
+struct cliente contato;
 //telas
 void tela_menu_cliente(void)
 {   system("clear||cls");
@@ -65,14 +43,14 @@ void tela_cadastrar_cliente(void)
     printf("===                   |Cadastrar Novo Cliente|                              ===\n");
     printf("===                                                                         ===\n");
     printf("===          Nome do Cliente: ");
-    fgets(nomecliente, 51, stdin);
-    ver_nome(nomecliente);
+    fgets(contato.nomecliente, 51, stdin);
+    ver_nome(contato.nomecliente);
     printf("===          CPF/CNPJ(Apenas Numeros): ");
-    ver_cpf(cpf_cliente);
+    ver_cpf(contato.cpf_cliente);
     printf("===          E-mail: ");
-    ver_email(email_cliente);
+    ver_email(contato.email_cliente);
     printf("===          Celular: ");
-    ver_celular(celular_cliente);
+    ver_celular(contato.celular_cliente);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -101,7 +79,7 @@ void tela_pesquisar_cliente(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(cpf_cliente, 15, stdin);
+    fgets(contato.cpf_cliente, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -129,7 +107,7 @@ void tela_editar_contato_do_cliente(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(cpf_cliente, 15, stdin);
+    fgets(contato.cpf_cliente, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -181,8 +159,8 @@ void tela_editar_nome_cliente(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Nome do Cliente: ");
-    fgets(nomecliente, 51, stdin);
-    ver_nome(nomecliente);
+    fgets(contato.nomecliente, 51, stdin);
+    ver_nome(contato.nomecliente);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -210,8 +188,8 @@ void tela_editar_email_cliente(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo E-Mail do Cliente: ");
-    fgets(email_cliente, 51, stdin);
-    ver_email(email_cliente);
+    fgets(contato.email_cliente, 51, stdin);
+    ver_email(contato.email_cliente);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -239,8 +217,8 @@ void tela_editar_celular_cliente(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Celular do Cliente: ");
-    fgets(celular_cliente, 16, stdin);
-    ver_celular(celular_cliente);
+    fgets(contato.celular_cliente, 16, stdin);
+    ver_celular(contato.celular_cliente);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");

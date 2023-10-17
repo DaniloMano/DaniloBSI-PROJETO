@@ -2,32 +2,9 @@
 #include <stdlib.h>
 #include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
-//variaveis
-char nomefornecedor[51];
-char cpf_fornecedor[15];
-char email_fornecedor[51];
-char celular_fornecedor[16];
-char endereco_fornecedor[51];
-
-//switchcase
-void escolha_editar_fornecedor(void);
-
-
-//função fornecedores
-void tela_menu_fornecedores(void);
-void tela_cadastrar_fornecedor(void);
-void tela_pesquisar_fornecedor(void);
-void tela_editar_contato_do_fornecedor(void);
-//escolha o que deseja editar
-void tela_escolha_editar_fornecedores(void);
-void tela_editar_nome_fornecedor(void);
-void tela_editar_email(void);
-void tela_editar_celular(void);
-void tela_editar_endereco(void);
-
-void tela_deletar_contato_do_fornecedor(void);
-
+#include "modulofornecedor.h"
 //funções fornecedores
+struct fornecedor insumo;
 //telas
 void tela_menu_fornecedores(void)
 {   system("clear||cls");
@@ -66,15 +43,15 @@ void tela_cadastrar_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===          Nome do Fornecedor: ");
     getchar();
-    ver_nome(nomefornecedor);
+    ver_nome(insumo.nomefornecedor);
     printf("===          CPF/CNPJ(Apenas Numeros): ");
-    ver_cpf(cpf_fornecedor);//no momento so tenho valida cpf
+    ver_cpf(insumo.cpf_fornecedor);//no momento so tenho valida cpf
     printf("===          E-mail: ");
-    ver_email(email_fornecedor);
+    ver_email(insumo.email_fornecedor);
     printf("===          Celular: ");
-    ver_celular(celular_fornecedor);
+    ver_celular(insumo.celular_fornecedor);
     printf("===          Endereco: ");
-    ver_nome(endereco_fornecedor);
+    ver_nome(insumo.endereco_fornecedor);
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
@@ -102,7 +79,7 @@ void tela_pesquisar_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(cpf_fornecedor, 15, stdin);
+    fgets(insumo.cpf_fornecedor, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -130,7 +107,7 @@ void tela_editar_contato_do_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(cpf_fornecedor, 15, stdin);
+    fgets(insumo.cpf_fornecedor, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -182,8 +159,8 @@ void tela_editar_nome_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Nome do Fornecedor: ");
-    fgets(nomefornecedor, 51, stdin);
-    ver_nome(nomefornecedor);
+    fgets(insumo.nomefornecedor, 51, stdin);
+    ver_nome(insumo.nomefornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -212,8 +189,8 @@ void tela_editar_email(void)
     printf("===                                                                         ===\n");
     printf("===       Novo E-Mail do Fornecedor: ");
     getchar();
-    fgets(email_fornecedor, 51, stdin);
-    ver_email(email_fornecedor);
+    fgets(insumo.email_fornecedor, 51, stdin);
+    ver_email(insumo.email_fornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -241,8 +218,8 @@ void tela_editar_celular(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Celular do Fornecedor: ");
-    fgets(celular_fornecedor, 16, stdin);
-    ver_celular(celular_fornecedor);
+    fgets(insumo.celular_fornecedor, 16, stdin);
+    ver_celular(insumo.celular_fornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -270,8 +247,8 @@ void tela_editar_endereco(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Endereco: ");
-    fgets(endereco_fornecedor, 51, stdin);
-    ver_nome(endereco_fornecedor);
+    fgets(insumo.endereco_fornecedor, 51, stdin);
+    ver_nome(insumo.endereco_fornecedor);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -299,7 +276,7 @@ void tela_deletar_contato_do_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
-    fgets(cpf_fornecedor, 15, stdin);
+    fgets(insumo.cpf_fornecedor, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");

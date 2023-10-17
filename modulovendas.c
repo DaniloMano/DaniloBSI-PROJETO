@@ -2,24 +2,9 @@
 #include <stdlib.h>
 #include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
-//variaveis que serão usadas aqui
-  char codigoproduto[10];
-  char pagamento[51];
-  char cpf[15];
-  char quantia_produto[10];
-
-//função vendas
-void tela_menu_vendas(void);
-void tela_realizar_venda(void);
-void tela_pesquisar_venda(void);
-void tela_editar_venda(void);
-//escolha o que deseja editar
-void tela_escolha_editar_venda(void);
-void tela_editar_quantidade_vendida(void);
-void tela_editar_forma_de_pagamento(void);
-void tela_editar_anular_venda(void);
-
+#include "modulovendas.h"
 //funções vendas
+struct vendas infovendas;
 //telas
 void tela_menu_vendas(void)
 {   system("clear||cls");
@@ -60,13 +45,13 @@ void tela_realizar_venda(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo do Produto (Apenas Numeros): ");
     getchar();
-    fgets(codigoproduto, 10, stdin);
+    fgets(infovendas.codigoproduto, 10, stdin);
     printf("===          Quantidade a ser Vendida: ");
-    ver_numero(quantia_produto);
+    ver_numero(infovendas.quantia_vendida);
     printf("===          Forma de Pagamento: ");
-    fgets(pagamento, 51, stdin);
+    fgets(infovendas.forma_pagamento, 51, stdin);
     printf("===          CPF/CNPJ do Cliente: ");
-    ver_cpf(cpf);
+    ver_cpf(infovendas.cpf);
     //printf("===          Data da Venda:                                                 ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -95,7 +80,7 @@ void tela_pesquisar_venda(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(cpf, 15, stdin);
+    fgets(infovendas.cpf, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -124,7 +109,7 @@ void tela_editar_venda(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(cpf, 15, stdin);
+    fgets(infovendas.cpf, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -157,7 +142,7 @@ void tela_escolha_editar_venda(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    
+
 }
 
 void tela_editar_quantidade_vendida(void)
@@ -179,7 +164,8 @@ void tela_editar_quantidade_vendida(void)
     printf("===                                                                         ===\n");
     printf("===      Nova Quantia (apenas numeros): ");
     getchar();
-    ver_numero(quantia_produto);
+    fgets(infovendas.quantia_vendida, 10, stdin);
+    ver_numero(infovendas.quantia_vendida);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -207,7 +193,8 @@ void tela_editar_forma_de_pagamento(void)
     printf("===                                                                         ===\n");
     printf("===      Nova Forma de Pagamento (apenas numeros): ");
     getchar();
-    ver_nome(pagamento);
+    fgets(infovendas.forma_pagamento, 51, stdin);
+    ver_nome(infovendas.forma_pagamento);
     printf("===                                                                         ===\n");
     printf("===    (Ex.: 1- A vista/ 2- Debito/ 3- Credito/ 4- Parcelar em nX)          ===\n");
     printf("===                                                                         ===\n");
@@ -238,7 +225,7 @@ void tela_editar_anular_venda(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(cpf, 15, stdin);
+    fgets(infovendas.cpf, 15, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
