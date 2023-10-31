@@ -89,9 +89,8 @@ Rede* tela_buscar_produto(void)
     rede = (Rede*) malloc(sizeof(Rede));
     
     fp = fopen("produtos.dat", "rb");
-    getchar();
     if (fp == NULL) {
-        printf("=== Nao foi possivel abrir o arquivo 'produtos.dat' ===\n"); //aqui estou com problemas, pois essa mensagem passa muito rapido na execução e mal dá pra ler
+        printf("=== Nao foi possivel abrir o arquivo 'produtos.dat' ===\n");
         getchar();
         
 
@@ -108,10 +107,6 @@ Rede* tela_buscar_produto(void)
 
     fclose(fp);
     free(rede);  // Libera a memória alocada antes de retornar NULL
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
     return NULL;
 }
 void tela_editar_produto(void)
@@ -423,7 +418,9 @@ void salva_produto(Rede* rede) {
 //função de exibir:
 void mostra_rede(Rede* red) {
   if (red == NULL){
+    getchar();
     printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    getchar();
   } else {
         system("clear||cls");
     printf("===============================================================================\n");
