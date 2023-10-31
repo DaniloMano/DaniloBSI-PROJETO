@@ -4,7 +4,6 @@
 #include "utilidadesprojetodanilo.h"
 #include "moduloproduto.h"
 //funções produtos
-struct produto rede;
 //telas
 void tela_menu_produtos(void)
 {   
@@ -29,9 +28,10 @@ void tela_menu_produtos(void)
     printf("===============================================================================\n");
 }
 
-void tela_adicionar_produto(void)
+Rede* tela_adicionar_produto(void)
 {
-
+    Rede* rede;
+    rede = (Rede*) malloc(sizeof(Rede));
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -46,13 +46,13 @@ void tela_adicionar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    ver_numero(rede.codigoproduto);
+    scanf("%hd", &rede->codigoproduto);
     printf("===          Nome do Produto: ");
-    ver_nome(rede.nomeproduto);
+    scanf(" %51[^\n]", rede->nomeproduto);
     printf("===          Preco do Produto: ");
-    ver_numero(rede.preco_produto);
+    scanf(" %10[^\n]", rede->preco_produto);
     printf("===          Quantidade: ");
-    ver_numero(rede.quantia_produto);
+    scanf(" %10[^\n]", rede->quantia_produto);
     //printf("===          Data de Fabricacao:                                            ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -60,10 +60,13 @@ void tela_adicionar_produto(void)
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
     printf("===============================================================================");
+    return rede;
 }
 
-void tela_buscar_produto(void)
-{
+Rede* tela_buscar_produto(void)
+{   FILE* fp;
+    Rede* rede;
+    int cod;
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -81,14 +84,37 @@ void tela_buscar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    fgets(rede.codigoproduto, 10, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
+    scanf("%d", &cod);
+    
+    rede = (Rede*) malloc(sizeof(Rede));
+    
+    fp = fopen("produtos.dat", "rb");
+    
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo 'produtos.dat' ===\n");
+        getchar();
+        getchar();
+        getchar();
+        getchar();
+
+        free(rede);  // Libera a memória alocada antes de retornar NULL
+        return NULL;
+    }
+
+    while (fread(rede, sizeof(Rede), 1, fp) == 1) {
+        if (rede->codigoproduto == cod) {
+            fclose(fp);
+            return rede;
+        }
+    }
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
     printf("===============================================================================");
+
+    fclose(fp);
+    free(rede);  // Libera a memória alocada antes de retornar NULL
+    return NULL;
 }
 void tela_editar_produto(void)
 {
@@ -109,7 +135,8 @@ void tela_editar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    fgets(rede.codigoproduto, 10, stdin);
+    getchar();
+    //fgets(rede.codigoproduto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -164,7 +191,8 @@ void tela_editar_nome_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Novo Nome do Produto: ");
     getchar();
-    fgets(rede.nomeproduto, 51, stdin);
+    getchar();
+    //fgets(rede.nomeproduto, 51, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -193,7 +221,8 @@ void tela_editar_preco_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===      Novo Preco (apenas numeros): ");
     getchar();
-    fgets(rede.preco_produto, 10, stdin);
+    getchar();
+    //fgets(rede.preco_produto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -222,7 +251,8 @@ void tela_editar_quantidade(void)
     printf("===                                                                         ===\n");
     printf("===      Nova Quantia (apenas numeros): ");
     getchar();
-    fgets(rede.quantia_produto, 10, stdin);
+    getchar();
+    //fgets(rede.quantia_produto, 10, stdin);
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -262,8 +292,10 @@ void tela_editar_quantidade(void)
     printf("===============================================================================");
 }*/
 
-void tela_deletar_produto(void)
-{
+Rede* tela_deletar_produto(void)
+{   FILE* fp;
+    Rede* rede;
+    int cod;
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -274,14 +306,19 @@ void tela_deletar_produto(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===                        |Deletar Produto|                                ===\n");
+    printf("===                       |Deletar Produto|                                 ===\n");
     printf("===                                                                         ===\n");
-    printf("===        [Digite o codigo do produto que voce deseja Deletar]             ===\n");
+    printf("===         [Digite o codigo do produto que voce deseja Deletar]            ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Codigo(Apenas Numeros): ");
+    printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    fgets(rede.codigoproduto, 10, stdin);
+    scanf("%d", &cod);
+    rede = (Rede*) malloc(sizeof(Rede));
+    fp = fopen("produtos.dat", "rb");
+    if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    }
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -289,6 +326,15 @@ void tela_deletar_produto(void)
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
     printf("===============================================================================");
+    while(!feof(fp)) {
+    fread(rede, sizeof(Rede), 1, fp);
+    if (rede->codigoproduto == cod){
+      fclose(fp);
+      return rede;
+    }
+    }
+    fclose(fp);
+    return NULL;
 }
 //navegação entre "menus"
 void escolha_editar_produto(void)
@@ -327,6 +373,7 @@ void escolha_editar_produto(void)
 }
 
 void do_menu_produtos(void) {
+    Rede* rede_nova;
     int escolha;
 
     do {
@@ -337,10 +384,14 @@ void do_menu_produtos(void) {
 
         switch (escolha) {
             case 1:
-                tela_adicionar_produto();
+                rede_nova = tela_adicionar_produto();
+                salva_produto(rede_nova);
+                free(rede_nova);
                 break;
             case 2:
-                tela_buscar_produto();
+                rede_nova = tela_buscar_produto();
+                mostra_rede(rede_nova);
+                free(rede_nova);
                 break;
             case 3:
                 escolha_editar_produto();
@@ -357,4 +408,46 @@ void do_menu_produtos(void) {
                 break;
         }
     } while (escolha != 0);
+}
+
+//função pra salvar em arquivo:
+void salva_produto(Rede* rede) {
+  FILE* fp;
+  fp = fopen("produtos.dat", "ab");
+  if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  fwrite(rede, sizeof(Rede), 1, fp);
+  fclose(fp);
+}
+
+//função de exibir:
+void mostra_rede(Rede* red) {
+  if (red == NULL){
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+  } else {
+        system("clear||cls");
+    printf("===============================================================================\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        >>>|MENU PRODUTOS|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                          |Buscar Produto|                               ===\n");
+    printf("===                                                                         ===\n");
+    getchar();
+    printf("===          Codigo: %hd\n", red->codigoproduto);
+    printf("===          Nome: %s\n", red->nomeproduto);
+    printf("===          Preco: %s\n", red->preco_produto);
+    printf("===          Quantia: %s\n", red->quantia_produto);
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+    getchar();
+
+  }
 }
