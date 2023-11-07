@@ -7,8 +7,9 @@ typedef struct produto Rede;
 struct produto {
 short int codigoproduto;
 char nomeproduto[51];
-char preco_produto[10];
-char quantia_produto[10];
+short int preco_produto;
+short int quantia_produto;
+char atividade;
 };
 //o struct acima põe nos arquivo .h
 // função produtos
@@ -23,7 +24,13 @@ void tela_editar_preco_do_produto(void);
 void tela_editar_quantidade(void);
 void tela_editardatafabricacao(void);
 
+//funções de exclusão
+void do_deleta_rede(void);
+void tela_escolha_deletar(void);
 Rede* tela_deletar_produto(void);
+void deleta_rede(Rede* rede_escolhida);
+Rede* tela_deletar_arquivo_produto(void);
+void deleta_arquivo_rede(void);
 
 //função salva arquivo:
 void salva_produto(Rede*);

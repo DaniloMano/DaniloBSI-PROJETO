@@ -84,3 +84,5 @@ void ver_numero(char *numero) {
     fgets(numero, 10, stdin);
   }
 }
+
+//outras funções 
