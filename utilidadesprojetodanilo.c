@@ -2,18 +2,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-// função ler nome
-void ver_nome(char *);
-// função ler cpf:
-void ver_cpf(char *);
-// função ler email
-void ver_email(char *);
-// função ler celular
-void ver_celular(char *);
-// função ler numero
-void ver_numero(char *);
-//seguindo a mesma logica do codigo exemplo de flavius
-// ler nome
+// função ver nome
 void ver_nome(char *nome) {
   fgets(nome, 51, stdin);
   while (!valida_nome(
@@ -29,7 +18,6 @@ void ver_nome(char *nome) {
 // função para ler cpf
 void ver_cpf(char *cpf) {
   do {
-    fgets(cpf, 15, stdin);
     limpa_enter(cpf);
     tirapontohifen_cpf(cpf);
     if (!valida_cpf(cpf)) {
