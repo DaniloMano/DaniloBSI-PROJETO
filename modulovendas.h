@@ -3,21 +3,35 @@
 #include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
 //tipo abstrato
+typedef struct vendas Vendido;
 struct vendas {
-char codigoproduto[10];
-char forma_pagamento[51];
+short int codigo_venda;
+short int codigo_produto_vendido;
 char cpf[15];
-char quantia_vendida[10];
+short int quantia_vendida;
+char forma_pagamento;
+char atividade;
 };
 //o struct acima põe nos arquivo .h
 
 //função vendas
 void tela_menu_vendas(void);
-void tela_realizar_venda(void);
-void tela_pesquisar_venda(void);
-void tela_editar_venda(void);
+Vendido* tela_realizar_venda(void);
+void salva_venda(Vendido*);
+Vendido* tela_pesquisar_venda(void);
+void mostra_venda(Vendido*);
+Vendido* tela_editar_venda(void);
 //escolha o que deseja editar
 void tela_escolha_editar_venda(void);
-void tela_editar_quantidade_vendida(void);
-void tela_editar_forma_de_pagamento(void);
-void tela_editar_anular_venda(void);
+void tela_editar_produto_vendido(Vendido*);
+void tela_editar_quantidade_vendida(Vendido*);
+void tela_editar_forma_de_pagamento(Vendido*);
+void tela_editar_cpf(Vendido*);
+
+//função de exclusão
+Vendido* tela_editar_anular_venda(void);
+void do_anula_venda(void);
+void tela_escolha_anular(void);
+void deleta_venda(Vendido*);
+Vendido* tela_deletar_arquivo_vendas(void);
+void deleta_arquivo_venda(void);

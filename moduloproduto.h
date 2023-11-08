@@ -16,13 +16,13 @@ char atividade;
 void tela_menu_produtos(void);
 Rede* tela_adicionar_produto(void);
 Rede* tela_buscar_produto(void);
-void tela_editar_produto(void);
+Rede* tela_editar_produto(void);
 //escolha do que deseja editar
 void tela_escolha_editar_produto(void);
-void tela_editar_nome_do_produto(void);
-void tela_editar_preco_do_produto(void);
-void tela_editar_quantidade(void);
-void tela_editardatafabricacao(void);
+void tela_editar_nome_do_produto(Rede*);
+void tela_editar_preco_do_produto(Rede*);
+void tela_editar_quantidade(Rede*);
+void tela_editar_atividade(Rede*);
 
 //funções de exclusão
 void do_deleta_rede(void);

@@ -1,28 +1,3 @@
-/*
-anotações para a proxima alteração do modulo:
-a atividade da semana 12 diz o seguinte:
-Implemente módulos que permitam realizar tanto a exclusão lógica quanto a exclusão física dos dados existentes
-nos arquivos do tipo binário existentes no seu projeto.
-A exclusão lógica deverá ocorrer quando o usuário optar por excluir um dado que tenha sido anteriormente
-armazenado. A exclusão física será executada somente quando o usuário desejar apagar TODOS os dados do programa.
-Cada estrutura deverá conter um campo status que indica se aquele registro foi ou não excluído (logicamente).
-O programa deverá ainda ser capaz de recuperar os dados excluídos (logicamente) em uma execução anterior.
-ou seja, precisamos implantar um menu que permita escolher se vai ser feita a exclusão física ou lógica
-e logo depois um switchcase que leve às funções que farão isso, no entanto falta implementar a exclusão lógica
-mas parece ser mais simples
-
-logo depois vamos usar a exclusão lógica como base para fazer as funções de edição, pois a exclusão lógica
-permite trocar o status dos produtos (de ativo (a) para inativo(i), então é possível usar isso de base
-para editar as informações nas outras variáveis dos campos da struct de produtos)
-
-após isso, temos que criar um módulo de relatório que mostre a lista de itens de cada módulo. com tudo isso
-pronto, vamos voltar com as funções de validação, e devemos alterar algumas, pois os tipos de algumas
-variaveis foram trocadas, e isso vai interferir na forma como as funções de validação funcionam atualmente
-funções de validação como as de número e cpf são exemplos das que devem ser revisadas, usaremos como base 
-o projeto python para ver como fica a de cpf. Após isso, devemos tentar diminuir funções que aparecem
-em cada módulo.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "utilgeral.h"
@@ -31,29 +6,36 @@ em cada módulo.
 //funções produtos
 //navegação entre "menus"
 void escolha_editar_produto(void)
-{
+{   Rede* rede_editada;
     int escolha;
 
     do {
         // Exibe o menu produtos
-        tela_editar_produto();
+        //tela_editar_produto();
         tela_escolha_editar_produto();
         printf("===            Escolha a opcao desejada: ");
         scanf("%d", &escolha);
-
         switch (escolha) {
             case 1:
-                tela_editar_nome_do_produto();
+                rede_editada = tela_editar_produto();
+                tela_editar_nome_do_produto(rede_editada);
+                free(rede_editada);
                 break;
             case 2:
-                tela_editar_preco_do_produto();
+                rede_editada = tela_editar_produto();
+                tela_editar_preco_do_produto(rede_editada);
+                free(rede_editada);
                 break;
             case 3:
-                tela_editar_quantidade();
+                rede_editada = tela_editar_produto();
+                tela_editar_quantidade(rede_editada);
+                free(rede_editada);
                 break;
-            /*case 4:
-                tela_editardatafabricacao();
-                break;*/
+            case 4:
+                rede_editada = tela_editar_produto();
+                tela_editar_atividade(rede_editada);
+                free(rede_editada);
+                break;
             case 0:
                 break;
             default:
@@ -263,8 +245,10 @@ void mostra_rede(Rede* red) {
 
 //função de edição
 
-void tela_editar_produto(void)
-{
+Rede* tela_editar_produto(void)
+{   FILE* fp;
+    Rede* rede;
+    int cod;
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -282,15 +266,30 @@ void tela_editar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    getchar();
-    //fgets(rede.codigoproduto, 10, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+    scanf("%d", &cod);
+    
+    rede = (Rede*) malloc(sizeof(Rede));
+    
+    fp = fopen("produtos.dat", "rb");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo 'produtos.dat' ===\n");
+        getchar();
+        
+
+        free(rede);  // Libera a memória alocada antes de retornar NULL
+        return NULL;
+    }
+
+    while (fread(rede, sizeof(Rede), 1, fp) == 1) {
+        if (rede->codigoproduto == cod) {
+            fclose(fp);
+            return rede;
+        }
+    }
+
+    fclose(fp);
+    free(rede);  // Libera a memória alocada antes de retornar NULL
+    return NULL;
 }
 
 //escolha do que deseja editar
@@ -312,15 +311,19 @@ void tela_escolha_editar_produto(void)
     printf("===          1. Nome do Produto                                             ===\n");
     printf("===          2. Preco do Produto                                            ===\n");
     printf("===          3. Quantidade                                                  ===\n");
-    //printf("===          4. Data de Fabricacao                                          ===\n");
+    printf("===          4. Atividade (Ativo ou Inativo)                                ===\n");
     printf("===          0. <<Voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
 
 }
 
-void tela_editar_nome_do_produto(void)
-{
+void tela_editar_nome_do_produto(Rede* rede_editada)
+{   FILE* fp;
+    Rede* rede_salva;
+    char nome_temporario[51];
+    int achou = 0;
+
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -337,20 +340,46 @@ void tela_editar_nome_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===          Novo Nome do Produto: ");
-    getchar();
-    getchar();
-    //fgets(rede.nomeproduto, 51, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+
+
+  if (rede_editada == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+  }
+  else {
+    rede_salva = (Rede*) malloc(sizeof(Rede));
+    fp = fopen("produtos.dat", "r+b");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+
+      exit(1);
+    }
+    while (fread(rede_salva, sizeof(Rede), 1, fp) == 1) {
+        if ((rede_salva->codigoproduto == rede_editada->codigoproduto) && (rede_salva->atividade != 'i')) {
+            achou = 1;
+            scanf(" %51[^\n]", nome_temporario);
+            strcpy(rede_salva->nomeproduto, nome_temporario);
+            fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
+            fwrite(rede_salva, sizeof(Rede), 1, fp);
+            printf("=== Produto Editado com Sucesso                                             ===\n");
+            getchar();
+            getchar();
+            break;
+        }
+    }
+    if (!achou) {
+    printf("=== Nao foi possivel editar o arquivo                                       ===\n");
+    }
+    fclose(fp);
+    free(rede_salva);
+  }
+
 }
 
-void tela_editar_preco_do_produto(void)
-{
+void tela_editar_preco_do_produto(Rede* rede_editada)
+{   FILE* fp;
+    Rede* rede_salva;
+    short int preco_temporario;
+    int achou = 0;
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -367,20 +396,44 @@ void tela_editar_preco_do_produto(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===      Novo Preco (apenas numeros): ");
-    getchar();
-    getchar();
-    //fgets(rede.preco_produto, 10, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+    if (rede_editada == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+  }
+  else {
+    rede_salva = (Rede*) malloc(sizeof(Rede));
+    fp = fopen("produtos.dat", "r+b");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+
+      exit(1);
+    }
+    while (fread(rede_salva, sizeof(Rede), 1, fp) == 1) {
+        if ((rede_salva->codigoproduto == rede_editada->codigoproduto) && (rede_salva->atividade != 'i')) {
+            achou = 1;
+            scanf("%hd", &preco_temporario);
+            rede_salva->preco_produto = preco_temporario;
+            fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
+            fwrite(rede_salva, sizeof(Rede), 1, fp);
+            printf("=== Produto Editado com Sucesso                                             ===\n");
+            getchar();
+            getchar();
+            break;
+        }
+    }
+    if (!achou) {
+    printf("=== Nao foi possivel editar o arquivo                                       ===\n");
+    }
+    fclose(fp);
+    free(rede_salva);
+  }
+
 }
 
-void tela_editar_quantidade(void)
-{
+void tela_editar_quantidade(Rede* rede_editada)
+{   FILE* fp;
+    Rede* rede_salva;
+    short int quantia_temporaria;
+    int achou = 0;
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -397,20 +450,45 @@ void tela_editar_quantidade(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===      Nova Quantia (apenas numeros): ");
-    getchar();
-    getchar();
-    //fgets(rede.quantia_produto, 10, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+if (rede_editada == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+  }
+  else {
+    rede_salva = (Rede*) malloc(sizeof(Rede));
+    fp = fopen("produtos.dat", "r+b");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+
+      exit(1);
+    }
+    while (fread(rede_salva, sizeof(Rede), 1, fp) == 1) {
+        if ((rede_salva->codigoproduto == rede_editada->codigoproduto) && (rede_salva->atividade != 'i')) {
+            achou = 1;
+            scanf("%hd", &quantia_temporaria);
+            rede_salva->quantia_produto = quantia_temporaria;
+            fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
+            fwrite(rede_salva, sizeof(Rede), 1, fp);
+            printf("=== Produto Editado com Sucesso                                             ===\n");
+            getchar();
+            getchar();
+            break;
+        }
+    }
+    if (!achou) {
+    printf("=== Nao foi possivel editar o arquivo                                       ===\n");
+    }
+    fclose(fp);
+    free(rede_salva);
+  }
+
 }
 
-/*void tela_editardatafabricacao(void)
-{
+void tela_editar_atividade(Rede* rede_editada) {
+    FILE* fp;
+    Rede* rede_salva;
+    char atividade_temporaria;
+    int achou = 0;
+
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -421,23 +499,42 @@ void tela_editar_quantidade(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                      >>>|MENU PRODUTOS|<<<                              ===\n");
     printf("===-------------------------------------------------------------------------===\n");
-    printf("===               |Editar data de fabricacao do Produto|                    ===\n");
+    printf("===                   |Editar Atividade do Produto|                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===      [Digite a nova data (ou 'cancel' para cancelar a edicao)]          ===\n");
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===      Nova Data (apenas numeros): ");
-    getchar();
-    fgets(codigoproduto, 10, stdin);
+    printf("===      [Digite a nova Atividade (ou 'cancel' para cancelar a edicao)]     ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    getchar();
-    printf("===============================================================================");
-}*/
+    printf("===      Nova Atividade ('a' = Ativo || 'i' = Inativo): ");
+
+    if (rede_editada == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    } else {
+        rede_salva = (Rede*)malloc(sizeof(Rede));
+        fp = fopen("produtos.dat", "r+b");
+        if (fp == NULL) {
+            printf("=== Nao foi possivel abrir o arquivo 'produtos.dat'                        ===\n");
+            exit(1);
+        }
+        while (fread(rede_salva, sizeof(Rede), 1, fp) == 1) {
+            if (rede_salva->codigoproduto == rede_editada->codigoproduto) {
+                achou = 1;
+                scanf(" %c", &atividade_temporaria);
+                rede_salva->atividade = atividade_temporaria;
+                fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
+                fwrite(rede_salva, sizeof(Rede), 1, fp);
+                printf("=== Produto Editado com Sucesso                                            ===\n");
+                getchar();
+                break;
+            }
+        }
+        if (!achou) {
+            printf("=== Nao foi possivel editar o arquivo                                      ===\n");
+        }
+        fclose(fp);
+        free(rede_salva);
+    }
+}
+
 
 //funções de exclusão
 void do_deleta_rede(void) {
@@ -568,7 +665,6 @@ void deleta_rede(Rede* rede_escolhida) {
             fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
             fwrite(rede_salva, sizeof(Rede), 1, fp);
             printf("=== Produto Deletado com Sucesso                                            ===\n");
-            getchar();
             getchar();
             break;
         }
