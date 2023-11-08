@@ -30,6 +30,7 @@ void tela_menu_vendas(void)
 
 Vendido* tela_realizar_venda(void)
 {   Vendido* compra;
+    
     compra = (Vendido*) malloc(sizeof(Vendido));
     system("clear||cls");
     printf("===============================================================================\n");
@@ -54,6 +55,7 @@ Vendido* tela_realizar_venda(void)
     scanf(" %c", &compra->forma_pagamento);
     printf("===          CPF/CNPJ do Cliente: ");
     scanf(" %15[^\n]", compra->cpf);
+    ver_cpf(compra->cpf);
     compra->atividade = 'a';
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -443,6 +445,7 @@ void tela_editar_cpf(Vendido* compra_editada) {
         if (venda_salva->codigo_venda == compra_editada->codigo_venda) {
             achou = 1;
             scanf(" %15[^\n]", cpf_temporario);
+            ver_cpf(cpf_temporario);
             strcpy(venda_salva->cpf, cpf_temporario);
             fseek(fp, -1 * sizeof(Vendido), SEEK_CUR);
             fwrite(venda_salva, sizeof(Vendido), 1, fp);
