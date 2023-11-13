@@ -36,6 +36,8 @@ void escolha_editar_venda(void);
 void do_menu_fornecedores(void);
 void escolha_editar_fornecedor(void);
 
+
+
 // Função Principal que chama todas as outras
 int main(void) {
     do_menu_inicial();
@@ -64,7 +66,7 @@ void do_menu_inicial(void) {
                 do_menu_vendas();
                 break;
             case 3:
-                do_menu_cliente();
+                do_menu_clientes();
                 break;
             case 4:
                 do_menu_fornecedores();

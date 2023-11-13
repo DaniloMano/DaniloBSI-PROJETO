@@ -4,7 +4,6 @@
 #include "utilidadesprojetodanilo.h"
 #include "modulofornecedor.h"
 //funções fornecedores
-struct fornecedor insumo;
 //telas
 void tela_menu_fornecedores(void)
 {   system("clear||cls");
@@ -21,14 +20,14 @@ void tela_menu_fornecedores(void)
     printf("===          1. Cadastrar Novo Fornecedor                                   ===\n");
     printf("===          2. Pesquisar Contato de um Fornecedor                          ===\n");
     printf("===          3. Editar Dados de um Fornecedor                               ===\n");
-    printf("===          4. Deletar Contato de um Fornecedor                            ===\n");
     printf("===          0. <<voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
 }
 
-void tela_cadastrar_fornecedor(void)
-{
+Insumo* tela_cadastrar_fornecedor(void)
+{   Insumo* importacao;
+    importacao = (Insumo*) malloc(sizeof(Insumo));
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -41,27 +40,47 @@ void tela_cadastrar_fornecedor(void)
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                   |Cadastrar Novo Fornecedor|                           ===\n");
     printf("===                                                                         ===\n");
-    printf("===          Nome do Fornecedor: ");
     getchar();
-    ver_nome(insumo.nomefornecedor);
+    printf("===          Nome do Fornecedor: ");
+    scanf(" %51[^\n]", importacao->nomefornecedor);
     printf("===          CPF/CNPJ(Apenas Numeros): ");
-    ver_cpf(insumo.cpf_fornecedor);//no momento so tenho valida cpf
+    scanf(" %15[^\n]", importacao->cpf_fornecedor);
+    ver_cpf(importacao->cpf_fornecedor);    
     printf("===          E-mail: ");
-    ver_email(insumo.email_fornecedor);
+    scanf(" %51[^\n]", importacao->email_fornecedor);
+    ver_email(importacao->email_fornecedor);
     printf("===          Celular: ");
-    ver_celular(insumo.celular_fornecedor);
+    scanf(" %16[^\n]", importacao->celular_fornecedor);
+    ver_celular(importacao->celular_fornecedor);
     printf("===          Endereco: ");
-    ver_nome(insumo.endereco_fornecedor);
+    scanf(" %51[^\n]", importacao->endereco_fornecedor);
+    importacao->atividade = 'a';
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===============================================================================\n");
     printf("===          Aperte ENTER para prosseguir:");
     getchar();
+    getchar();
     printf("===============================================================================");
+    return importacao;
 }
 
-void tela_pesquisar_fornecedor(void)
-{
+//função pra salvar em arquivo:
+void salva_fornecedor(Insumo* importacao) {
+  FILE* fp;
+  fp = fopen("fornecedores.dat", "ab");
+  if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  fwrite(importacao, sizeof(Insumo), 1, fp);
+  fclose(fp);
+}
+
+Insumo* tela_pesquisar_fornecedor(void)
+{   FILE* fp;
+    Insumo* importacao;
+    char cod[15];
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -79,17 +98,76 @@ void tela_pesquisar_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(insumo.cpf_fornecedor, 15, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+    scanf("%s", cod);
+    
+    importacao = (Insumo*) malloc(sizeof(Insumo));
+    
+    fp = fopen("fornecedores.dat", "rb");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo 'fornecedores.dat' ===\n");
+        getchar();
+        
+
+        free(importacao);  // Libera a memória alocada antes de retornar NULL
+        return NULL;
+    }
+
+    while (fread(importacao, sizeof(Insumo), 1, fp) == 1) {
+        if (strcmp(importacao->cpf_fornecedor, cod) == 0) {
+            fclose(fp);
+            return importacao;
+        }
+    }
+
+    fclose(fp);
+    free(importacao);  // Libera a memória alocada antes de retornar NULL
+    return NULL;
 }
-void tela_editar_contato_do_fornecedor(void)
-{
+
+void mostra_fornecedor(Insumo* forn) {
+    char estado[20];
+    if (forn == NULL) {
+        getchar();
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+        getchar();
+    } else {
+        system("clear||cls");
+        printf("===============================================================================\n");
+        printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
+        printf("===============================================================================\n");
+        printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===                  |Pesquisar Fornecedor|                                 ===\n");
+        printf("===                                                                         ===\n");
+        getchar();
+        printf("===          Nome do Fornecedor: %s\n", forn->nomefornecedor);
+        printf("===          CPF/CNPJ: %s\n", forn->cpf_fornecedor);
+        printf("===          E-mail: %s\n", forn->email_fornecedor);
+        printf("===          Celular: %s\n", forn->celular_fornecedor);
+        printf("===          Endereco: %s\n", forn->endereco_fornecedor);
+        if (forn->atividade == 'a') {
+        strcpy(estado, "Ativo");
+        } else if (forn->atividade == 'i') {
+        strcpy(estado, "Inativo");}
+        printf("===          Atividade: %s\n", estado);
+        printf("===                                                                         ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===============================================================================\n");
+        getchar();
+    }
+}
+
+
+Insumo* tela_editar_contato_do_fornecedor(void)
+{   
+    FILE* fp;
+    Insumo* importacao;
+    char cod[15];
+    
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -107,15 +185,32 @@ void tela_editar_contato_do_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     getchar();
-    fgets(insumo.cpf_fornecedor, 15, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+    scanf("%s", cod);
+    
+    importacao = (Insumo*) malloc(sizeof(Insumo));
+    
+    fp = fopen("fornecedores.dat", "rb");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo 'fornecedores.dat' ===\n");
+        getchar();
+        
+
+        free(importacao);  // Libera a memória alocada antes de retornar NULL
+        return NULL;
+    }
+
+    while (fread(importacao, sizeof(Insumo), 1, fp) == 1) {
+        if (strcmp(importacao->cpf_fornecedor, cod) == 0) {
+            fclose(fp);
+            return importacao;
+        }
+    }
+
+    fclose(fp);
+    free(importacao);  // Libera a memória alocada antes de retornar NULL
+    return NULL;
 }
+
 
 //escolha o que deseja editar
 void tela_escolha_editar_fornecedores(void)
@@ -136,13 +231,18 @@ void tela_escolha_editar_fornecedores(void)
     printf("===          2. E-Mail                                                      ===\n");
     printf("===          3. Celular                                                     ===\n");
     printf("===          4. Endereco                                                    ===\n");
+    printf("===          5. Deletar Fornecedor                                          ===\n");
     printf("===          0. <<Voltar>>                                                  ===\n");
     printf("===-------------------------------------------------------------------------===\n");
 }
 
 
-void tela_editar_nome_fornecedor(void)
-{
+void tela_editar_nome_fornecedor(Insumo* fornecedor_editado) {
+    FILE* fp;
+    Insumo* fornecedor_salvo;
+    char nome_temporario[51];
+    int achou = 0;
+    
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -159,19 +259,45 @@ void tela_editar_nome_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Nome do Fornecedor: ");
-    fgets(insumo.nomefornecedor, 51, stdin);
-    ver_nome(insumo.nomefornecedor);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
     getchar();
-    printf("===============================================================================");
+    if (fornecedor_editado == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    }
+    else {
+        fornecedor_salvo = (Insumo*) malloc(sizeof(Insumo));
+        fp = fopen("fornecedores.dat", "r+b");
+        if (fp == NULL) {
+            printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+            exit(1);
+        }
+        while (fread(fornecedor_salvo, sizeof(Insumo), 1, fp) == 1) {
+            if (strcmp(fornecedor_salvo->cpf_fornecedor, fornecedor_editado->cpf_fornecedor) == 0) {
+                achou = 1;
+                scanf(" %51[^\n]", nome_temporario);
+                strcpy(fornecedor_salvo->nomefornecedor, nome_temporario);
+                fseek(fp, -1 * sizeof(Insumo), SEEK_CUR);
+                fwrite(fornecedor_salvo, sizeof(Insumo), 1, fp);
+                printf("=== Fornecedor Editado com Sucesso                                             ===\n");
+                getchar();
+                getchar();
+                break;
+            }
+        }
+        if (!achou) {
+            printf("=== Nao foi possivel editar o arquivo                                       ===\n");
+        }
+        fclose(fp);
+        free(fornecedor_salvo);
+    }
 }
 
-void tela_editar_email(void)
-{
+
+void tela_editar_email_fornecedor(Insumo* fornecedor_editado) {
+    FILE* fp;
+    Insumo* fornecedor_salvo;
+    char email_temporario[51];
+    int achou = 0;
+    
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -189,19 +315,44 @@ void tela_editar_email(void)
     printf("===                                                                         ===\n");
     printf("===       Novo E-Mail do Fornecedor: ");
     getchar();
-    fgets(insumo.email_fornecedor, 51, stdin);
-    ver_email(insumo.email_fornecedor);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
-    getchar();
-    printf("===============================================================================");
+    if (fornecedor_editado == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    }
+    else {
+        fornecedor_salvo = (Insumo*) malloc(sizeof(Insumo));
+        fp = fopen("fornecedores.dat", "r+b");
+        if (fp == NULL) {
+            printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+            exit(1);
+        }
+        while (fread(fornecedor_salvo, sizeof(Insumo), 1, fp) == 1) {
+            if (strcmp(fornecedor_salvo->cpf_fornecedor, fornecedor_editado->cpf_fornecedor) == 0) {
+                achou = 1;
+                fgets(email_temporario, 51, stdin);
+                ver_email(email_temporario);
+                strcpy(fornecedor_salvo->email_fornecedor, email_temporario);
+                fseek(fp, -1 * sizeof(Insumo), SEEK_CUR);
+                fwrite(fornecedor_salvo, sizeof(Insumo), 1, fp);
+                printf("=== Fornecedor Editado com Sucesso                                             ===\n");
+                getchar();
+                break;
+            }
+        }
+        if (!achou) {
+            printf("=== Nao foi possivel editar o arquivo                                       ===\n");
+        }
+        fclose(fp);
+        free(fornecedor_salvo);
+    }
 }
 
-void tela_editar_celular(void)
-{
+
+void tela_editar_celular_fornecedor(Insumo* fornecedor_editado) {
+    FILE* fp;
+    Insumo* fornecedor_salvo;
+    char celular_temporario[16];
+    int achou = 0;
+    
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -218,19 +369,45 @@ void tela_editar_celular(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Celular do Fornecedor: ");
-    fgets(insumo.celular_fornecedor, 16, stdin);
-    ver_celular(insumo.celular_fornecedor);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
     getchar();
-    printf("===============================================================================");
+    if (fornecedor_editado == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    }
+    else {
+        fornecedor_salvo = (Insumo*) malloc(sizeof(Insumo));
+        fp = fopen("fornecedores.dat", "r+b");
+        if (fp == NULL) {
+            printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+            exit(1);
+        }
+        while (fread(fornecedor_salvo, sizeof(Insumo), 1, fp) == 1) {
+            if (strcmp(fornecedor_salvo->cpf_fornecedor, fornecedor_editado->cpf_fornecedor) == 0) {
+                achou = 1;
+                fgets(celular_temporario, 16, stdin);
+                ver_celular(celular_temporario);
+                strcpy(fornecedor_salvo->celular_fornecedor, celular_temporario);
+                fseek(fp, -1 * sizeof(Insumo), SEEK_CUR);
+                fwrite(fornecedor_salvo, sizeof(Insumo), 1, fp);
+                printf("=== Fornecedor Editado com Sucesso                                             ===\n");
+                getchar();
+                break;
+            }
+        }
+        if (!achou) {
+            printf("=== Nao foi possivel editar o arquivo                                       ===\n");
+        }
+        fclose(fp);
+        free(fornecedor_salvo);
+    }
 }
 
-void tela_editar_endereco(void)
-{
+
+void tela_editar_endereco_fornecedor(Insumo* fornecedor_editado) {
+    FILE* fp;
+    Insumo* fornecedor_salvo;
+    char endereco_temporario[51];
+    int achou = 0;
+    
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -247,19 +424,44 @@ void tela_editar_endereco(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===       Novo Endereco: ");
-    fgets(insumo.endereco_fornecedor, 51, stdin);
-    ver_nome(insumo.endereco_fornecedor);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
     getchar();
-    printf("===============================================================================");
+    if (fornecedor_editado == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    }
+    else {
+        fornecedor_salvo = (Insumo*) malloc(sizeof(Insumo));
+        fp = fopen("fornecedores.dat", "r+b");
+        if (fp == NULL) {
+            printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+            exit(1);
+        }
+        while (fread(fornecedor_salvo, sizeof(Insumo), 1, fp) == 1) {
+            if (strcmp(fornecedor_salvo->cpf_fornecedor, fornecedor_editado->cpf_fornecedor) == 0) {
+                achou = 1;
+                fgets(endereco_temporario, 51, stdin);
+                strcpy(fornecedor_salvo->endereco_fornecedor, endereco_temporario);
+                fseek(fp, -1 * sizeof(Insumo), SEEK_CUR);
+                fwrite(fornecedor_salvo, sizeof(Insumo), 1, fp);
+                printf("=== Fornecedor Editado com Sucesso                                             ===\n");
+                getchar();
+                break;
+            }
+        }
+        if (!achou) {
+            printf("=== Nao foi possivel editar o arquivo                                       ===\n");
+        }
+        fclose(fp);
+        free(fornecedor_salvo);
+    }
 }
 
-void tela_deletar_contato_do_fornecedor(void)
-{
+
+Insumo* tela_deletar_contato_do_fornecedor(void)
+{   
+    FILE* fp;
+    Insumo* fornecedor;
+    char cpf_temporario[15];
+    
     system("clear||cls");
     printf("===============================================================================\n");
     printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
@@ -276,39 +478,54 @@ void tela_deletar_contato_do_fornecedor(void)
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");
     printf("===          CPF/CNPJ(Apenas Numeros): ");
-    fgets(insumo.cpf_fornecedor, 15, stdin);
-    printf("===                                                                         ===\n");
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    printf("===          Aperte ENTER para prosseguir:");
     getchar();
-    printf("===============================================================================");
+    scanf(" %15[^\n]", cpf_temporario);
+    
+    fornecedor = (Insumo*) malloc(sizeof(Insumo));
+    
+    fp = fopen("fornecedores.dat", "rb");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo 'fornecedores.dat' ===\n");
+        getchar();
+        free(fornecedor);  // Libera a memória alocada antes de retornar NULL
+        return NULL;
+    }
+
+    while (fread(fornecedor, sizeof(Insumo), 1, fp) == 1) {
+        if (strcmp(fornecedor->cpf_fornecedor, cpf_temporario) == 0) {
+            fclose(fp);
+            return fornecedor;
+        }
+    }
+
+    fclose(fp);
+    free(fornecedor);  // Libera a memória alocada antes de retornar NULL
+    return NULL;
 }
 
-//navegação entre "menus"
+//funcoes de exclusao
 
-void do_menu_fornecedores(void) {
+void do_deleta_fornecedor(void) {
+    Insumo* fornecedor_novo;
     int escolha;
 
     do {
-        // Exibe o menu produtos
-        tela_menu_fornecedores();
+        tela_escolha_deletar_fornecedor();
         printf("===            Escolha a opcao desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
             case 1:
-                tela_cadastrar_fornecedor();
+                fornecedor_novo = tela_deletar_contato_do_fornecedor();
+                deleta_fornecedor(fornecedor_novo);
+                getchar();
+                free(fornecedor_novo);
                 break;
             case 2:
-                tela_pesquisar_fornecedor();
-                break;
-            case 3:
-                escolha_editar_fornecedor();
-                break;
-            case 4:
-                tela_deletar_contato_do_fornecedor();
+                fornecedor_novo = tela_deletar_arquivo_fornecedores();
+                deleta_arquivo_fornecedor();
+                getchar();
+                free(fornecedor_novo);
                 break;
             case 0:
                 break;
@@ -321,27 +538,163 @@ void do_menu_fornecedores(void) {
     } while (escolha != 0);
 }
 
-void escolha_editar_fornecedor(void)
+void tela_escolha_deletar_fornecedor(void)
 {
+    system("clear||cls");
+    printf("===============================================================================\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===               |Exclusao Fisica ou Logica do Fornecedor?|                ===\n");
+    printf("===                                                                         ===\n");
+    printf("===          1. Exclusao Logica (escolhe o que exclui)                      ===\n");
+    printf("===          2. Exclusao Fisica (exclui o 'fornecedores.dat')               ===\n");
+    printf("===          0. <<<Voltar>>>                                                ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+}
+
+void deleta_fornecedor(Insumo* fornecedor_editado) {
+  FILE* fp;
+  Insumo* fornecedor_salvo;
+  int achou = 0;
+  if (fornecedor_editado == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+  }
+  else {
+    fornecedor_salvo = (Insumo*) malloc(sizeof(Insumo));
+    fp = fopen("fornecedores.dat", "r+b");
+    if (fp == NULL) {
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+      exit(1);
+    }
+    while (fread(fornecedor_salvo, sizeof(Insumo), 1, fp) == 1) {
+        if (strcmp(fornecedor_salvo->cpf_fornecedor, fornecedor_editado->cpf_fornecedor) == 0) {
+            achou = 1;
+            fornecedor_salvo->atividade = 'i';
+            fseek(fp, -1 * sizeof(Insumo), SEEK_CUR);
+            fwrite(fornecedor_salvo, sizeof(Insumo), 1, fp);
+            printf("=== Fornecedor Deletado com Sucesso                                               ===\n");
+            getchar();
+            break;
+        }
+    }
+    if (!achou) {
+    printf("=== Nao foi possivel deletar o arquivo                                      ===\n");
+    }
+    fclose(fp);
+    free(fornecedor_salvo);
+  }
+}
+
+Insumo* tela_deletar_arquivo_fornecedores(void)
+{   
+    system("clear||cls");
+    printf("===============================================================================\n");
+    printf("===                     |Danilo's HAMMOCK REST|                             ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                   |Fabrica de Redes de Dormir|                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                    >>>|MENU FORNECEDORES|<<<                            ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                 |Deletar Contato de um Fornecedor|                      ===\n");
+    printf("===                                                                         ===\n");
+    printf("===              [Digite o CPF/CNPJ do Fornecedor que voce deseja Deletar]  ===\n");
+    printf("===                                                                         ===\n");
+    printf("===                                                                         ===\n");
+
+    return NULL;
+}
+
+void deleta_arquivo_fornecedor(void) {
+    char arquivo[] = "fornecedores.dat";
+
+    if (remove(arquivo) == 0) {
+        printf("===    Arquivo Deletado com Sucesso                                         ===\n");
+    } else {
+        perror("===    Arquivo Nao Encontrado Para Exclusao                               ===\n");
+    }
+    getchar();
+}
+
+
+//navegação entre "menus"
+
+void escolha_editar_fornecedor(void)
+{   
+    Insumo* fornecedor_editado;
     int escolha;
     do {
-        tela_editar_contato_do_fornecedor();
         tela_escolha_editar_fornecedores();
         printf("===            Escolha a opcao desejada: ");
         scanf("%d", &escolha);
 
         switch (escolha) {
             case 1:
-                tela_editar_nome_fornecedor();
+                fornecedor_editado = tela_editar_contato_do_fornecedor();
+                tela_editar_nome_fornecedor(fornecedor_editado);
+                free(fornecedor_editado);
                 break;
             case 2:
-                tela_editar_email();
+                fornecedor_editado = tela_editar_contato_do_fornecedor();
+                tela_editar_email_fornecedor(fornecedor_editado);
+                free(fornecedor_editado);
                 break;
             case 3:
-                tela_editar_celular();
+                fornecedor_editado = tela_editar_contato_do_fornecedor();
+                tela_editar_celular_fornecedor(fornecedor_editado);
+                free(fornecedor_editado);
                 break;
             case 4:
-                tela_editar_endereco();
+                fornecedor_editado = tela_editar_contato_do_fornecedor();
+                tela_editar_endereco_fornecedor(fornecedor_editado);
+                free(fornecedor_editado);
+                break;
+            case 5:
+                do_deleta_fornecedor();
+                break;
+            case 0:
+                break;
+            default:
+                printf("===            Opcao invalida. Tente novamente.                             ===\n");
+                getchar();
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
+}
+
+void do_menu_fornecedores(void) {
+    Insumo* novo_fornecedor;
+    int escolha;
+
+    do {
+        tela_menu_fornecedores();
+        printf("===            Escolha a opcao desejada: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                novo_fornecedor = tela_cadastrar_fornecedor();
+                salva_fornecedor(novo_fornecedor);
+                free(novo_fornecedor);
+                break;
+            case 2:
+                novo_fornecedor = tela_pesquisar_fornecedor();
+                mostra_fornecedor(novo_fornecedor);
+                free(novo_fornecedor);
+                break;
+            case 3:
+                escolha_editar_fornecedor();
                 break;
             case 0:
                 break;

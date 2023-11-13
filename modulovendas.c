@@ -200,8 +200,6 @@ Vendido* tela_editar_venda(void)
     if (fp == NULL) {
         printf("=== Nao foi possivel abrir o arquivo 'vendas.dat' ===\n");
         getchar();
-        
-
         free(compra);  // Libera a memória alocada antes de retornar NULL
         return NULL;
     }
@@ -562,7 +560,7 @@ void tela_escolha_anular(void)
     printf("===                   |Exclusao Fisica ou Logica?|                          ===\n");
     printf("===                                                                         ===\n");
     printf("===          1. Exclusao Logica (escolhe o que exclui)                      ===\n");
-    printf("===          2. Exclusao Fisica (exclui o 'produtos.dat')                   ===\n");
+    printf("===          2. Exclusao Fisica (exclui o 'vendas.dat')                     ===\n");
     printf("===          0. <<<Voltar>>>                                                ===\n");
     printf("===                                                                         ===\n");
     printf("===                                                                         ===\n");

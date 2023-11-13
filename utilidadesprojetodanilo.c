@@ -4,7 +4,6 @@
 #include <string.h>
 // função ver nome
 void ver_nome(char *nome) {
-  fgets(nome, 51, stdin);
   while (!valida_nome(
       nome)) { // se o valida_nome retorna 1, o loop acaba, se retornar 0, o
                // loop continua pq ta com as logicas invertida
@@ -13,6 +12,7 @@ void ver_nome(char *nome) {
     printf("===          Nome: ");
     fgets(nome, 51, stdin);
   }
+    getchar();
 }
 //seguindo a mesma logica do codigo exemplo de flavius
 // função para ler cpf
@@ -34,7 +34,6 @@ void ver_cpf(char *cpf) {
 //seguindo a mesma logica do codigo exemplo de flavius
 // ler email
 void ver_email(char *email) {
-  fgets(email, 51, stdin);
   while (!validararrobaeponto(email)) {
     printf("===          E-mail invalido. Tente Novamente                      "
            "      ===\n");
@@ -51,7 +50,6 @@ void ver_email(char *email) {
 //seguindo a mesma logica do codigo exemplo de flavius
 // ler celular
 void ver_celular(char *celular) {
-  fgets(celular, 16, stdin);
   limpa_enter(celular);
   while (!valida_celular(celular)) {
     printf("===          Celular invalido. Tente Novamente                     "
@@ -66,7 +64,6 @@ void ver_celular(char *celular) {
 //seguindo a mesma logica do codigo exemplo de flavius
 // ler numero
 void ver_numero(char *numero) {
-  fgets(numero, 10, stdin);
   while (!valida_numero(numero)) {
     printf("===          Numero invalido. Tente Novamente: ");
     fgets(numero, 10, stdin);
