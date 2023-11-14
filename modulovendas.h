@@ -1,3 +1,5 @@
+#ifndef MODULOVENDAS_H
+#define MODULOVENDAS_H
 #include <stdio.h>
 #include <stdlib.h>
 #include "utilgeral.h"
@@ -35,3 +37,4 @@ void tela_escolha_anular(void);
 void deleta_venda(Vendido*);
 Vendido* tela_deletar_arquivo_vendas(void);
 void deleta_arquivo_venda(void);
+#endif

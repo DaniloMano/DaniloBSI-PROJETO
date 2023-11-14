@@ -31,7 +31,8 @@ void tela_inicial(void)
     printf("===            2. Modulo Vendas                                             ===\n");
     printf("===            3. Modulo Clientes                                           ===\n");
     printf("===            4. Modulo Fornecedores                                       ===\n");
-    printf("===            5. Telas de Apresentacao                                     ===\n");
+    printf("===            5. Modulo Relatorios                                         ===\n");
+    printf("===            6. Telas de Apresentacao                                     ===\n");
     printf("===            0. Encerrar o Programa                                       ===\n");
     printf("===                                                                         ===\n");
     printf("===============================================================================\n");

@@ -1,3 +1,5 @@
+#ifndef MODULOCLIENTE_H
+#define MODULOCLIENTE_H
 #include <stdio.h>
 #include <stdlib.h>
 #include "utilgeral.h"
@@ -37,3 +39,4 @@ void tela_escolha_deletar_cliente(void);
 void deleta_cliente(Contato*);
 Contato* tela_deletar_arquivo_clientes(void);
 void deleta_arquivo_cliente(void);
+#endif

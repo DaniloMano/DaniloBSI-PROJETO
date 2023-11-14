@@ -1,3 +1,5 @@
+#ifndef MODULOFORNECEDOR_H
+#define MODULOFORNECEDOR_H
 #include <stdio.h>
 #include <stdlib.h>
 #include "utilgeral.h"
@@ -42,3 +44,4 @@ void deleta_fornecedor(Insumo*);
 Insumo* tela_deletar_arquivo_fornecedores(void);
 void deleta_arquivo_fornecedor(void);
 
+#endif

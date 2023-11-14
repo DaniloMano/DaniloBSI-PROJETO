@@ -1,3 +1,5 @@
+#ifndef MODULOPRODUTOS_H
+#define MODULOPRODUTOS_H
 #include <stdio.h>
 #include <stdlib.h>
 #include "utilgeral.h"
@@ -37,3 +39,4 @@ void salva_produto(Rede*);
 
 //outras funções:
 void mostra_rede(Rede*);
+#endif

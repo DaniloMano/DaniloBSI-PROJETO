@@ -17,6 +17,7 @@
 #include "modulovendas.h"
 #include "modulocliente.h"
 #include "modulofornecedor.h"
+#include "modulorelatorio.h"
 #include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
 
@@ -36,6 +37,7 @@ void escolha_editar_venda(void);
 void do_menu_fornecedores(void);
 void escolha_editar_fornecedor(void);
 
+void do_menu_relatorio(void);
 
 
 // Função Principal que chama todas as outras
@@ -72,6 +74,9 @@ void do_menu_inicial(void) {
                 do_menu_fornecedores();
                 break;
             case 5:
+                do_menu_relatorio();
+                break;
+            case 6:
                 do_menu_apresentacao();
                 break;
             case 0:
