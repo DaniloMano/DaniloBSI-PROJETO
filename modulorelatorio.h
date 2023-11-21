@@ -11,14 +11,20 @@ void listaProdutos(void);
 void listaProdutosPorPreco(void);
 void listaProdutosPorQuantidade(void);
 void mostra_produto(Rede* red);
-//lista vendas
+//listando vendas
+void do_menu_relatorioVendas(void);
+void tela_menu_relatoriosVendas(void);
 void listaVendas(void);
+void listaVendasPorCodigoDoProduto(void);
+void listaVendasPorCPF(void);
+void listaVendasPorQuantidadeVendida(void);
+void listaVendasPorFormaDePagamento(void);
 void mostra_listavenda(Vendido*);
-//lista clientes
+//listando clientes
 void listaClientes(void);
-void mostra_listacliente(Contato*); // Adicione a função correspondente
-//lista fornecedores
-void listaFornecedores(void); // Adicione a função correspondente
-void mostra_listafornecedor(Insumo* fornecedor); // Adicione a função correspondente
+void mostra_listacliente(Contato*);
+//listando fornecedores
+void listaFornecedores(void);
+void mostra_listafornecedor(Insumo* fornecedor);
 
 #endif // MODULORELATORIO_H
