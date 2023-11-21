@@ -10,12 +10,26 @@
 
 void do_menu_relatorio(void);
 void tela_menu_relatorios(void);
+//listando produtos
+void do_menu_relatorioProdutos(void);
+void tela_menu_relatoriosProdutos(void);
 void listaProdutos(void);
+void listaProdutosPorPreco(void);
+void listaProdutosPorQuantidade(void);
 void mostra_produto(Rede* red);
+//listando vendas
+void do_menu_relatorioVendas(void);
+void tela_menu_relatoriosVendas(void);
 void listaVendas(void);
+void listaVendasPorCodigoDoProduto(void);
+void listaVendasPorCPF(void);
+void listaVendasPorQuantidadeVendida(void);
+void listaVendasPorFormaDePagamento(void);
 void mostra_listavenda(Vendido*);
+//listando clientes
 void listaClientes(void);
 void mostra_listacliente(Contato*);
+//listando fornecedores
 void listaFornecedores(void);
 void mostra_listafornecedor(Insumo* fornecedor);
 
@@ -30,10 +44,10 @@ void do_menu_relatorio(void) {
 
         switch (escolha) {
             case 1:
-                listaProdutos();
+                do_menu_relatorioProdutos();
                 break;
             case 2:
-                listaVendas();
+                do_menu_relatorioVendas();
                 break;
             case 3:
                 listaClientes();
@@ -74,6 +88,59 @@ void tela_menu_relatorios(void)
     printf("===============================================================================\n");
 }
 //lista produtos
+
+void do_menu_relatorioProdutos(void) {
+    int escolha;
+
+    do {
+        tela_menu_relatoriosProdutos();
+        printf("===            Escolha a opcao desejada: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                listaProdutos();
+                break;
+            case 2:
+                listaProdutosPorPreco();
+                break;
+            case 3:
+                listaProdutosPorQuantidade();
+                break;
+            case 0:
+                break;
+            default:
+                printf("===            Opcao invalida. Tente novamente.                             ===\n");
+                getchar();
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
+}
+
+void tela_menu_relatoriosProdutos(void)
+{   
+    system("clear||cls");
+    printf("===============================================================================\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                                                                         ===\n");
+    printf("===          1. Codigo                                                      ===\n");
+    printf("===          2. Preco                                                       ===\n");
+    printf("===          3. Quantidade                                                  ===\n");
+    printf("===          0. <<voltar>>                                                  ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+}
+
+
 void listaProdutos(void) {
   FILE* fp;
   Rede* red;
@@ -107,6 +174,79 @@ void listaProdutos(void) {
   free(red);
 }
 
+void listaProdutosPorPreco(void) {
+  FILE* fp;
+  Rede* red;
+  short int preco_temporario;
+    system("clear||cls");
+    printf("===============================================================================\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        |Lista de Produtos|                              ===\n");
+    printf("===                                                                         ===\n");
+    printf("===       Preco (apenas numeros): ");
+    scanf("%hd", &preco_temporario);
+    red = (Rede*) malloc(sizeof(Rede));
+    fp = fopen("produtos.dat", "rb");
+    if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  while(fread(red, sizeof(Rede), 1, fp)) {
+    if (red->preco_produto == preco_temporario) {
+      mostra_produto(red);
+      printf("===============================================================================\n");
+    }
+  }
+  getchar();
+  getchar();
+  fclose(fp);
+  free(red);
+}
+
+void listaProdutosPorQuantidade(void) {
+  FILE* fp;
+  Rede* red;
+  short int quantidade_temporario;
+  system("clear||cls");
+  printf("===============================================================================\n");
+  printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+  printf("===============================================================================\n");
+  printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        |Lista de Produtos|                              ===\n");
+  printf("===                                                                         ===\n");
+  printf("===       Quantidade (apenas numeros): ");
+  scanf("%hd", &quantidade_temporario);
+  red = (Rede*) malloc(sizeof(Rede));
+  fp = fopen("produtos.dat", "rb");
+  if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  while(fread(red, sizeof(Rede), 1, fp)) {
+    if (red->quantia_produto == quantidade_temporario) {
+      mostra_produto(red);
+      printf("===============================================================================\n");
+    }
+  }
+  getchar();
+  getchar();
+  fclose(fp);
+  free(red);
+}
+
+
 void mostra_produto(Rede* red) {
     char estado[7];
     if ((red == NULL) || (red->atividade == 'i')) {
@@ -120,6 +260,8 @@ void mostra_produto(Rede* red) {
     printf("===          Quantia: %hd\n", red->quantia_produto);
     if (red->atividade == 'a') {
       strcpy(estado, "Ativo");
+    } else if (red->atividade == 'i'){
+      strcpy(estado, "Inativo");
     }
     printf("===          Atividade: %s\n", estado);
     printf("===                                                                         ===\n");
@@ -129,6 +271,69 @@ void mostra_produto(Rede* red) {
   }
 }
 //lista vendas
+
+void do_menu_relatorioVendas(void) {
+    int escolha;
+
+    do {
+        // Exibe o menu produtos
+        tela_menu_relatoriosVendas();
+        printf("===            Escolha a opcao desejada: ");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                listaVendas();
+                break;
+            case 2:
+                listaVendasPorCodigoDoProduto();
+                break;
+            case 3:
+                listaVendasPorCPF();
+                break;
+            case 4:
+                listaVendasPorQuantidadeVendida();
+                break;
+            case 5:
+                listaVendasPorFormaDePagamento();
+                break;
+            case 0:
+                break;
+            default:
+                printf("===            Opcao invalida. Tente novamente.                             ===\n");
+                getchar();
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
+}
+
+
+
+void tela_menu_relatoriosVendas(void)
+{   
+    system("clear||cls");
+    printf("===============================================================================\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                                                                         ===\n");
+    printf("===          1. Codigo de Vendas                                            ===\n");
+    printf("===          2. Codigo Do Produto                                           ===\n");
+    printf("===          3. CPF                                                         ===\n");
+    printf("===          4. Quantia Vendida                                             ===\n");
+    printf("===          5. Forma de Pagamento                                          ===\n");
+    printf("===          0. <<voltar>>                                                  ===\n");
+    printf("===                                                                         ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===============================================================================\n");
+}
+
 
 void listaVendas(void) {
   FILE* fp;
@@ -163,6 +368,151 @@ void listaVendas(void) {
   free(vend);
 }
 
+void listaVendasPorCodigoDoProduto(void) {
+  FILE* fp;
+  Vendido* vend;
+  short int codigo_produto_temporario;
+  system("clear||cls");
+  printf("===============================================================================\n");
+  printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+  printf("===============================================================================\n");
+  printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        |Lista de Vendas|                                ===\n");
+  printf("===                                                                         ===\n");
+  printf("===       Codigo do Produto (apenas numeros): ");
+  scanf("%hd", &codigo_produto_temporario);
+  vend = (Vendido*) malloc(sizeof(Vendido));
+  fp = fopen("vendas.dat", "rb");
+  if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  while(fread(vend, sizeof(Vendido), 1, fp)) {
+    if (vend->codigo_produto_vendido == codigo_produto_temporario) {
+      mostra_listavenda(vend);
+      printf("===============================================================================\n");
+    }
+  }
+  getchar();
+  getchar();
+  fclose(fp);
+  free(vend);
+}
+
+void listaVendasPorCPF(void) {
+  FILE* fp;
+  Vendido* vend;
+  char cpf_temporario[15];
+  system("clear||cls");
+  printf("===============================================================================\n");
+  printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+  printf("===============================================================================\n");
+  printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        |Lista de Vendas|                                ===\n");
+  printf("===                                                                         ===\n");
+  printf("===       CPF (apenas numeros): ");
+  scanf("%s", cpf_temporario);
+  vend = (Vendido*) malloc(sizeof(Vendido));
+  fp = fopen("vendas.dat", "rb");
+  if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  while(fread(vend, sizeof(Vendido), 1, fp)) {
+    if (strcmp(vend->cpf, cpf_temporario) == 0) {
+      mostra_listavenda(vend);
+      printf("===============================================================================\n");
+    }
+  }
+  getchar();
+  getchar();
+  fclose(fp);
+  free(vend);
+}
+
+void listaVendasPorQuantidadeVendida(void) {
+  FILE* fp;
+  Vendido* vend;
+  short int quantia_vendida_temporario;
+  system("clear||cls");
+  printf("===============================================================================\n");
+  printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+  printf("===============================================================================\n");
+  printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        |Lista de Vendas|                                ===\n");
+  printf("===                                                                         ===\n");
+  printf("===       Quantia Vendida (apenas numeros): ");
+  scanf("%hd", &quantia_vendida_temporario);
+  vend = (Vendido*) malloc(sizeof(Vendido));
+  fp = fopen("vendas.dat", "rb");
+  if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  while(fread(vend, sizeof(Vendido), 1, fp)) {
+    if (vend->quantia_vendida == quantia_vendida_temporario) {
+      mostra_listavenda(vend);
+      printf("===============================================================================\n");
+    }
+  }
+  getchar();
+  getchar();
+  fclose(fp);
+  free(vend);
+}
+
+void listaVendasPorFormaDePagamento(void) {
+  FILE* fp;
+  Vendido* vend;
+  char forma_pagamento_temporario;
+  system("clear||cls");
+  printf("===============================================================================\n");
+  printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+  printf("===============================================================================\n");
+  printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+  printf("===-------------------------------------------------------------------------===\n");
+  printf("===                        |Lista de Vendas|                                ===\n");
+  printf("===                                                                         ===\n");
+  printf("===       Forma de Pagamento (apenas um caractere): ");
+  scanf(" %c", &forma_pagamento_temporario);
+  vend = (Vendido*) malloc(sizeof(Vendido));
+  fp = fopen("vendas.dat", "rb");
+  if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  while(fread(vend, sizeof(Vendido), 1, fp)) {
+    if (vend->forma_pagamento == forma_pagamento_temporario) {
+      mostra_listavenda(vend);
+      printf("===============================================================================\n");
+    }
+  }
+  getchar();
+  getchar();
+  fclose(fp);
+  free(vend);
+}
+
+
 void mostra_listavenda(Vendido* vend) {
     char estado[7];
     if ((vend == NULL) || (vend->atividade == 'i')) {
@@ -184,6 +534,8 @@ void mostra_listavenda(Vendido* vend) {
     printf("===          Forma de Pagamento: %s\n", estado);
     if (vend->atividade == 'a') {
       strcpy(estado, "Ativo");
+    } else if (vend->atividade == 'i'){
+      strcpy(estado, "Inativo");
     }
     printf("===          Atividade: %s\n", estado);
     printf("===                                                                         ===\n");
