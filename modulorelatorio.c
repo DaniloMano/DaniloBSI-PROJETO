@@ -16,7 +16,9 @@ void tela_menu_relatoriosProdutos(void);
 void listaProdutos(void);
 void listaProdutosPorPreco(void);
 void listaProdutosPorQuantidade(void);
+void listaProdutosPorFornecedor(void);
 void mostra_produto(Rede* red);
+char* pega_nome_fornecedor(char* cpf);
 //listando vendas
 void do_menu_relatorioVendas(void);
 void tela_menu_relatoriosVendas(void);
@@ -26,6 +28,12 @@ void listaVendasPorCPF(void);
 void listaVendasPorQuantidadeVendida(void);
 void listaVendasPorFormaDePagamento(void);
 void mostra_listavenda(Vendido*);
+char* pega_nome_produto(short int codigo_produto_vendido);
+short int pega_preco_produto(short int codigo_produto_vendido);
+char* pega_nome_cliente(char* cpf_cliente);
+char* pega_email_cliente(char* cpf_cliente);
+char* pega_celular_cliente(char* cpf_cliente);
+
 //listando clientes
 void listaClientes(void);
 void mostra_listacliente(Contato*);
@@ -106,6 +114,9 @@ void do_menu_relatorioProdutos(void) {
                 break;
             case 3:
                 listaProdutosPorQuantidade();
+                break;            
+            case 4:
+                listaProdutosPorFornecedor();
                 break;
             case 0:
                 break;
@@ -134,6 +145,7 @@ void tela_menu_relatoriosProdutos(void)
     printf("===          1. Codigo                                                      ===\n");
     printf("===          2. Preco                                                       ===\n");
     printf("===          3. Quantidade                                                  ===\n");
+    printf("===          4. Fornecedor                                                  ===\n");
     printf("===          0. <<voltar>>                                                  ===\n");
     printf("===                                                                         ===\n");
     printf("===-------------------------------------------------------------------------===\n");
@@ -246,30 +258,91 @@ void listaProdutosPorQuantidade(void) {
   free(red);
 }
 
+void listaProdutosPorFornecedor(void) {
+  FILE* fp;
+  Rede* red;
+  char cpf_fornecedor[15];
+    system("clear||cls");
+    printf("===============================================================================\n");
+    printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+    printf("===============================================================================\n");
+    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
+    printf("===-------------------------------------------------------------------------===\n");
+    printf("===                        |Lista de Produtos|                              ===\n");
+    printf("===                                                                         ===\n");
+    printf("===       CPF do Fornecedor: ");
+    scanf("%s", cpf_fornecedor);
+    red = (Rede*) malloc(sizeof(Rede));
+    fp = fopen("produtos.dat", "rb");
+    if (fp == NULL) {
+    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+    exit(1);
+  }
+  while(fread(red, sizeof(Rede), 1, fp)) {
+    if (strcmp(red->cpf_do_fornecedor, cpf_fornecedor) == 0) {
+      mostra_produto(red);
+      printf("===============================================================================\n");
+    }
+  }
+  getchar();
+  getchar();
+  fclose(fp);
+  free(red);
+}
+
 
 void mostra_produto(Rede* red) {
     char estado[7];
     if ((red == NULL) || (red->atividade == 'i')) {
-    getchar();
-    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
-    getchar();
+        getchar();
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+        getchar();
     } else {
-    printf("===          Codigo: %hd\n", red->codigoproduto);
-    printf("===          Nome: %s\n", red->nomeproduto);
-    printf("===          Preco: %hd\n", red->preco_produto);
-    printf("===          Quantia: %hd\n", red->quantia_produto);
-    if (red->atividade == 'a') {
-      strcpy(estado, "Ativo");
-    } else if (red->atividade == 'i'){
-      strcpy(estado, "Inativo");
+        printf("===          Codigo: %hd\n", red->codigoproduto);
+        printf("===          Nome: %s\n", red->nomeproduto);
+        printf("===          Preco: %hd\n", red->preco_produto);
+        printf("===          Quantia: %hd\n", red->quantia_produto);
+        char* nome_fornecedor = pega_nome_fornecedor(red->cpf_do_fornecedor);
+        if (nome_fornecedor != NULL) {
+            printf("===          Nome do Fornecedor: %s\n", nome_fornecedor);
+        }
+        printf("===          CPF do Fornecedor: %s\n", red->cpf_do_fornecedor);
+        if (red->atividade == 'a') {
+            strcpy(estado, "Ativo");
+        } else if (red->atividade == 'i'){
+            strcpy(estado, "Inativo");
+        }
+        printf("===          Atividade: %s\n", estado);
+        printf("===                                                                         ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
     }
-    printf("===          Atividade: %s\n", estado);
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-
-
-  }
 }
+
+char* pega_nome_fornecedor(char* cpf_fornecedor) {
+    FILE* file = fopen("fornecedores.dat", "r");
+    Insumo fornecedor;
+    char* nome_fornecedor = NULL;
+
+    if (file != NULL) {
+        while (fread(&fornecedor, sizeof(Insumo), 1, file)) {
+            if (strcmp(fornecedor.cpf_fornecedor, cpf_fornecedor) == 0) {
+                nome_fornecedor = malloc(strlen(fornecedor.nomefornecedor) + 1);
+                strcpy(nome_fornecedor, fornecedor.nomefornecedor);
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    return nome_fornecedor;
+}
+
+
+
 //lista vendas
 
 void do_menu_relatorioVendas(void) {
@@ -515,33 +588,164 @@ void listaVendasPorFormaDePagamento(void) {
 
 void mostra_listavenda(Vendido* vend) {
     char estado[7];
+    char* nome_produto;
+    short int preco_produto;
+    char* nome_cliente;
+    char* email_cliente;
+    char* celular_cliente;
+
     if ((vend == NULL) || (vend->atividade == 'i')) {
-    getchar();
-    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
-    getchar();
+        getchar();
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+        getchar();
     } else {
-    printf("===          Codigo da Venda: %hd\n", vend->codigo_venda);
-    printf("===          Codigo do Produto Vendido: %hd\n", vend->codigo_produto_vendido);
-    printf("===          CPF: %s\n", vend->cpf);
-    printf("===          Quantidade Vendida: %hd\n", vend->quantia_vendida);
-    if (vend->forma_pagamento == 'c') {
-      strcpy(estado, "Credito");
-    } else if (vend->forma_pagamento == 'd') {
-      strcpy(estado, "Debito");}
-      else if (vend->forma_pagamento == 'a') {
-      strcpy(estado, "A Vista");
+        printf("===          >>>Info do Produto<<<                                          ===\n");
+        printf("===          Codigo do Produto Vendido: %hd\n", vend->codigo_produto_vendido);
+        nome_produto = pega_nome_produto(vend->codigo_produto_vendido);
+        if (nome_produto != NULL) {
+            printf("===          Nome do Produto Vendido: %s\n", nome_produto);
+            free(nome_produto);
+        }
+        preco_produto = pega_preco_produto(vend->codigo_produto_vendido);
+        printf("===          Preco do Produto Vendido: %hd\n", preco_produto);
+        printf("===          >>>Info do Cliente<<<                                          ===\n");
+        nome_cliente = pega_nome_cliente(vend->cpf);
+        if (nome_cliente != NULL) {
+            printf("===          Nome do Cliente: %s\n", nome_cliente);
+            free(nome_cliente);
+        }
+        printf("===          CPF: %s\n", vend->cpf);
+        email_cliente = pega_email_cliente(vend->cpf);
+        if (email_cliente != NULL) {
+            printf("===          Email do Cliente: %s\n", email_cliente);
+            free(email_cliente);
+        }
+        celular_cliente = pega_celular_cliente(vend->cpf);
+        if (celular_cliente != NULL) {
+            printf("===          Celular do Cliente: %s\n", celular_cliente);
+            free(celular_cliente);
+        }
+        printf("===          >>>Info da Venda<<<                                            ===\n");
+        printf("===          Codigo da Venda: %hd\n", vend->codigo_venda);
+        printf("===          Quantidade Vendida: %hd\n", vend->quantia_vendida);
+        if (vend->forma_pagamento == 'c') {
+            strcpy(estado, "Credito");
+        } else if (vend->forma_pagamento == 'd') {
+            strcpy(estado, "Debito");
+        } else if (vend->forma_pagamento == 'a') {
+            strcpy(estado, "A Vista");
+        }
+        printf("===          Forma de Pagamento: %s\n", estado);
+        if (vend->atividade == 'a') {
+            strcpy(estado, "Ativo");
+        } else if (vend->atividade == 'i'){
+            strcpy(estado, "Inativo");
+        }
+        printf("===          Atividade: %s\n", estado);
+        printf("===                                                                         ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
     }
-    printf("===          Forma de Pagamento: %s\n", estado);
-    if (vend->atividade == 'a') {
-      strcpy(estado, "Ativo");
-    } else if (vend->atividade == 'i'){
-      strcpy(estado, "Inativo");
-    }
-    printf("===          Atividade: %s\n", estado);
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-  }
 }
+
+
+
+
+char* pega_nome_produto(short int codigo_produto_vendido) {
+    FILE* file = fopen("produtos.dat", "r");
+    Rede produto;
+    char* nome_produto = NULL;
+
+    if (file != NULL) {
+        while (fread(&produto, sizeof(Rede), 1, file)) {
+            if (produto.codigoproduto == codigo_produto_vendido) {
+                nome_produto = malloc(strlen(produto.nomeproduto) + 1);
+                strcpy(nome_produto, produto.nomeproduto);
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    return nome_produto;
+}
+
+short int pega_preco_produto(short int codigo_produto_vendido) {
+    FILE* file = fopen("produtos.dat", "r");
+    Rede produto;
+    short int preco_produto = -1; // valor inicial inválido
+
+    if (file != NULL) {
+        while (fread(&produto, sizeof(Rede), 1, file)) {
+            if (produto.codigoproduto == codigo_produto_vendido) {
+                preco_produto = produto.preco_produto;
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    return preco_produto;
+}
+
+char* pega_nome_cliente(char* cpf_cliente) {
+    FILE* file = fopen("clientes.dat", "r");
+    Contato cliente;
+    char* nome_cliente = NULL;
+
+    if (file != NULL) {
+        while (fread(&cliente, sizeof(Contato), 1, file)) {
+            if (strcmp(cliente.cpf_cliente, cpf_cliente) == 0) {
+                nome_cliente = malloc(strlen(cliente.nomecliente) + 1);
+                strcpy(nome_cliente, cliente.nomecliente);
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    return nome_cliente;
+}
+
+char* pega_email_cliente(char* cpf_cliente) {
+    FILE* file = fopen("clientes.dat", "r");
+    Contato cliente;
+    char* email_cliente = NULL;
+
+    if (file != NULL) {
+        while (fread(&cliente, sizeof(Contato), 1, file)) {
+            if (strcmp(cliente.cpf_cliente, cpf_cliente) == 0) {
+                email_cliente = malloc(strlen(cliente.email_cliente) + 1);
+                strcpy(email_cliente, cliente.email_cliente);
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    return email_cliente;
+}
+
+char* pega_celular_cliente(char* cpf_cliente) {
+    FILE* file = fopen("clientes.dat", "r");
+    Contato cliente;
+    char* celular_cliente = NULL;
+
+    if (file != NULL) {
+        while (fread(&cliente, sizeof(Contato), 1, file)) {
+            if (strcmp(cliente.cpf_cliente, cpf_cliente) == 0) {
+                celular_cliente = malloc(strlen(cliente.celular_cliente) + 1);
+                strcpy(celular_cliente, cliente.celular_cliente);
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    return celular_cliente;
+}
+
+
+//lista cliente
 
 void listaClientes(void) {
   FILE* fp;
@@ -595,6 +799,8 @@ void mostra_listacliente(Contato* cliente) {
     printf("===-------------------------------------------------------------------------===\n");
   }
 }
+
+//lista fornecedores
 
 void listaFornecedores(void) {
   FILE* fp;

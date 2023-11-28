@@ -11,6 +11,7 @@ short int codigoproduto;
 char nomeproduto[51];
 short int preco_produto;
 short int quantia_produto;
+char cpf_do_fornecedor[15];
 char atividade;
 };
 //o struct acima põe nos arquivo .h

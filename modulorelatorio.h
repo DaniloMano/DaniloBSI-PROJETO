@@ -20,6 +20,11 @@ void listaVendasPorCPF(void);
 void listaVendasPorQuantidadeVendida(void);
 void listaVendasPorFormaDePagamento(void);
 void mostra_listavenda(Vendido*);
+char* pega_nome_produto(short int codigo_produto_vendido);
+short int pega_preco_produto(short int codigo_produto_vendido);
+char* pega_nome_cliente(char* cpf_cliente);
+char* pega_email_cliente(char* cpf_cliente);
+char* pega_celular_cliente(char* cpf_cliente);
 //listando clientes
 void listaClientes(void);
 void mostra_listacliente(Contato*);
