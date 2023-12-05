@@ -136,6 +136,7 @@ Rede* tela_adicionar_produto(void)
     scanf(" %hd", &rede->quantia_produto);
     printf("===          CPF do Fornecedor: ");
     scanf(" %14[^\n]", rede->cpf_do_fornecedor);
+    ver_cpf(rede->cpf_do_fornecedor);
     rede->atividade = 'a'; //a= ativo | i = inativo
     //printf("===          Data de Fabricacao:                                            ===\n");
     printf("===                                                                         ===\n");

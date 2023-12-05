@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "utilgeral.h"
 #include "utilidadesprojetodanilo.h"
+#include "moduloproduto.h"
+#include "modulocliente.h"
 #include "modulovendas.h"
 //funções vendas
 //telas
@@ -51,7 +53,7 @@ Vendido* tela_realizar_venda(void)
     scanf("%hd", &compra->codigo_produto_vendido);
     printf("===          Quantidade a ser Vendida: ");
     scanf(" %hd", &compra->quantia_vendida);
-    printf("===          Forma de Pagamento: ");
+    printf("=== Forma de Pagamento(a=a vista| c=credito| d=debito): ");
     scanf(" %c", &compra->forma_pagamento);
     printf("===          CPF/CNPJ do Cliente: ");
     scanf(" %15[^\n]", compra->cpf);
@@ -128,48 +130,80 @@ Vendido* tela_pesquisar_venda(void)
 
 void mostra_venda(Vendido* comp) {
     char estado[20];
-    if (comp == NULL) /*|| (red->atividade == 'i')*/ {
-    getchar();
-    printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
-    getchar();
+    char* nome_produto;
+    short int preco_produto;
+    char* nome_cliente;
+    char* email_cliente;
+    char* celular_cliente;
+
+    if (comp == NULL) {
+        getchar();
+        printf("=== Nao foi possivel abrir o arquivo                                        ===\n");
+        getchar();
     } else {
         system("clear||cls");
-    printf("===============================================================================\n");
-    printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
-    printf("===============================================================================\n");
-    printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===                         >>>|MENU VENDAS|<<<                             ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===                           |Buscar Venda|                                ===\n");
-    printf("===                                                                         ===\n");
-    getchar();
-    printf("===          Codigo da Venda: %hd\n", comp->codigo_venda);
-    printf("===          Codigo do Produto: %hd\n", comp->codigo_produto_vendido);
-    printf("===          CPF: %s\n", comp->cpf);
-    printf("===          Quantia Vendida: %hd\n", comp->quantia_vendida);
-    if (comp->forma_pagamento == 'c') {
-      strcpy(estado, "Credito");
-    } else if (comp->forma_pagamento == 'd') {
-      strcpy(estado, "Debito");}
-      else if (comp->forma_pagamento == 'a') {
-      strcpy(estado, "A Vista");
+        printf("===============================================================================\n");
+        printf("===                   |Danilo's HAMMOCK REST|                               ===\n");
+        printf("===============================================================================\n");
+        printf("===             |Developed by @DaniloMano -> since Aug, 2023|               ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===                      |Fabrica de Redes de Dormir|                       ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===                         >>>|MENU VENDAS|<<<                             ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===                           |Buscar Venda|                                ===\n");
+        printf("===                                                                         ===\n");
+        getchar();
+        printf("===          >>>Info do Produto<<<                                          ===\n");
+        printf("===          Codigo do Produto Vendido: %hd\n", comp->codigo_produto_vendido);
+        nome_produto = pega_nome_produto(comp->codigo_produto_vendido);
+        if (nome_produto != NULL) {
+            printf("===          Nome do Produto Vendido: %s\n", nome_produto);
+            free(nome_produto);
+        }
+        preco_produto = pega_preco_produto(comp->codigo_produto_vendido);
+        printf("===          Preco do Produto Vendido: %hd\n", preco_produto);
+        printf("===          >>>Info do Cliente<<<                                          ===\n");
+        nome_cliente = pega_nome_cliente(comp->cpf);
+        if (nome_cliente != NULL) {
+            printf("===          Nome do Cliente: %s\n", nome_cliente);
+            free(nome_cliente);
+        }
+        printf("===          CPF: %s\n", comp->cpf);
+        email_cliente = pega_email_cliente(comp->cpf);
+        if (email_cliente != NULL) {
+            printf("===          Email do Cliente: %s\n", email_cliente);
+            free(email_cliente);
+        }
+        celular_cliente = pega_celular_cliente(comp->cpf);
+        if (celular_cliente != NULL) {
+            printf("===          Celular do Cliente: %s\n", celular_cliente);
+            free(celular_cliente);
+        }
+        printf("===          >>>Info da Venda<<<                                            ===\n");
+        printf("===          Codigo da Venda: %hd\n", comp->codigo_venda);
+        printf("===          Quantidade Vendida: %hd\n", comp->quantia_vendida);
+        if (comp->forma_pagamento == 'c') {
+            strcpy(estado, "Credito");
+        } else if (comp->forma_pagamento == 'd') {
+            strcpy(estado, "Debito");
+        } else if (comp->forma_pagamento == 'a') {
+            strcpy(estado, "A Vista");
+        }
+        printf("===          Forma de Pagamento: %s\n", estado);
+        if (comp->atividade == 'a') {
+            strcpy(estado, "Ativo");
+        } else if (comp->atividade == 'i'){
+            strcpy(estado, "Inativo");
+        }
+        printf("===          Atividade: %s\n", estado);
+        printf("===                                                                         ===\n");
+        printf("===-------------------------------------------------------------------------===\n");
+        printf("===============================================================================\n");
+        getchar();
     }
-    printf("===          Forma de Pagamento: %s\n", estado);
-    if (comp->atividade == 'a') {
-      strcpy(estado, "Ativo");
-    } else if (comp->atividade == 'i') {
-      strcpy(estado, "Inativo");}
-    printf("===          Atividade: %s\n", estado);
-    printf("===                                                                         ===\n");
-    printf("===-------------------------------------------------------------------------===\n");
-    printf("===============================================================================\n");
-    getchar();
-
-  }
 }
+
 
 Vendido* tela_editar_venda(void)
 {   FILE* fp;

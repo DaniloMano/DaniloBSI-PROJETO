@@ -31,3 +31,10 @@ int eh_numerovalido(char);
 void ver_numero(char*);
 int valida_numero(char*);
 int eh_numero(char);
+
+//funções de relatorio:
+char* pega_nome_produto(short int codigo_produto_vendido);
+short int pega_preco_produto(short int codigo_produto_vendido);
+char* pega_nome_cliente(char* cpf_cliente);
+char* pega_email_cliente(char* cpf_cliente);
+char* pega_celular_cliente(char* cpf_cliente);
