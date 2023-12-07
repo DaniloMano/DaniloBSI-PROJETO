@@ -127,7 +127,7 @@ Rede* tela_adicionar_produto(void)
     printf("===                                                                         ===\n");
     printf("===          Codigo (Apenas Numeros): ");
     getchar();
-    scanf("%hd", &rede->codigoproduto);
+    ler_short_int(&rede->codigoproduto);
     printf("===          Nome do Produto: ");
     scanf(" %51[^\n]", rede->nomeproduto);
     ver_nome(rede->nomeproduto);
