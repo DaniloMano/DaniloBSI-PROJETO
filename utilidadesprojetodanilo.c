@@ -7,17 +7,25 @@
 #include "modulocliente.h"
 #include "modulofornecedor.h"
 // função ver nome
-void ver_nome(char *nome) {
-  while (!valida_nome(
-      nome)) { // se o valida_nome retorna 1, o loop acaba, se retornar 0, o
-               // loop continua pq ta com as logicas invertida
-    printf("===          Caractere Invalido. Tente Novamente                            ===\n");
-    printf("===          Nome: ");
-    fgets(nome, 51, stdin);
-  }
-    getchar();
+
+void limpar_buffer(void) {
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF) {} // Limpa o buffer de entrada
 }
-//seguindo a mesma logica do codigo exemplo de flavius
+
+void ver_nome(char *nome) {
+  do {
+    if (!valida_nome(nome)) {
+      printf("===          Nome Invalido. Tente Novamente                                 ===\n");
+      printf("===          Nome: ");
+      fgets(nome, 51, stdin);
+      nome[strcspn(nome, "\n")] = 0; // Remove o caractere de nova linha
+    }
+    limpar_buffer(); // Limpa o buffer após cada tentativa, válida ou não
+  } while (!valida_nome(nome));
+}
+
+
 // função para ler cpf
 void ver_cpf(char *cpf) {
   do {
@@ -66,14 +74,39 @@ void ver_celular(char *celular) {
 // VALIDA APENAS NUMERO
 //seguindo a mesma logica do codigo exemplo de flavius
 // ler numero
-void ver_numero(char *numero) {
-  while (!valida_numero(numero)) {
-    printf("===          Numero invalido. Tente Novamente: ");
-    fgets(numero, 10, stdin);
-  }
+void ler_short_int(short int *numero) {
+    int resultado;
+    do {
+        resultado = scanf(" %hd", numero);
+        limpar_buffer(); // Limpa o buffer de entrada após a tentativa de leitura
+        if (resultado == 1) {
+            break; // Sai do loop se a entrada for um número válido
+        } else {
+            printf("=== Entrada invalida. Tente novamente: ");
+        }
+    } while (resultado != 1);
 }
 
-//outras funções 
+//outras funções
+//relatorio de produto
+char* pega_nome_fornecedor(char* cpf_fornecedor) {
+    FILE* file = fopen("fornecedores.dat", "r");
+    Insumo fornecedor;
+    char* nome_fornecedor = NULL;
+
+    if (file != NULL) {
+        while (fread(&fornecedor, sizeof(Insumo), 1, file)) {
+            if (strcmp(fornecedor.cpf_fornecedor, cpf_fornecedor) == 0) {
+                nome_fornecedor = malloc(strlen(fornecedor.nomefornecedor) + 1);
+                strcpy(nome_fornecedor, fornecedor.nomefornecedor);
+                break;
+            }
+        }
+        fclose(file);
+    }
+
+    return nome_fornecedor;
+}
 //relatorio de venda
 char* pega_nome_produto(short int codigo_produto_vendido) {
     FILE* file = fopen("produtos.dat", "r");

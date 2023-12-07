@@ -130,10 +130,11 @@ Rede* tela_adicionar_produto(void)
     scanf("%hd", &rede->codigoproduto);
     printf("===          Nome do Produto: ");
     scanf(" %51[^\n]", rede->nomeproduto);
-    printf("===          Preco do Produto: ");
-    scanf(" %hd", &rede->preco_produto);
-    printf("===          Quantidade: ");
-    scanf(" %hd", &rede->quantia_produto);
+    ver_nome(rede->nomeproduto);
+    printf("===    Preco do Produto(apenas numero): ");
+    ler_short_int(&rede->preco_produto);
+    printf("===    Quantidade(apenas numero): ");
+    ler_short_int(&rede->quantia_produto);
     printf("===          CPF do Fornecedor: ");
     scanf(" %14[^\n]", rede->cpf_do_fornecedor);
     ver_cpf(rede->cpf_do_fornecedor);
@@ -361,6 +362,7 @@ void tela_editar_nome_do_produto(Rede* rede_editada)
         if ((rede_salva->codigoproduto == rede_editada->codigoproduto) && (rede_salva->atividade != 'i')) {
             achou = 1;
             scanf(" %51[^\n]", nome_temporario);
+            ver_nome(nome_temporario);
             strcpy(rede_salva->nomeproduto, nome_temporario);
             fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
             fwrite(rede_salva, sizeof(Rede), 1, fp);
@@ -414,7 +416,7 @@ void tela_editar_preco_do_produto(Rede* rede_editada)
     while (fread(rede_salva, sizeof(Rede), 1, fp) == 1) {
         if ((rede_salva->codigoproduto == rede_editada->codigoproduto) && (rede_salva->atividade != 'i')) {
             achou = 1;
-            scanf("%hd", &preco_temporario);
+            ler_short_int(&preco_temporario);
             rede_salva->preco_produto = preco_temporario;
             fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
             fwrite(rede_salva, sizeof(Rede), 1, fp);
@@ -468,7 +470,7 @@ if (rede_editada == NULL) {
     while (fread(rede_salva, sizeof(Rede), 1, fp) == 1) {
         if ((rede_salva->codigoproduto == rede_editada->codigoproduto) && (rede_salva->atividade != 'i')) {
             achou = 1;
-            scanf("%hd", &quantia_temporaria);
+            ler_short_int(&quantia_temporaria);
             rede_salva->quantia_produto = quantia_temporaria;
             fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
             fwrite(rede_salva, sizeof(Rede), 1, fp);

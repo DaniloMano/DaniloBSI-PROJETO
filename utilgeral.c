@@ -22,42 +22,28 @@ void limpa_enter(char* str) {//tive uma ajudinha do chat gpt
     }
 }
 //seguindo a mesma logica do codigo exemplo de flavius
-//a seguir vem funções que conferem letra por letra do nome e confere se ta tudo certinho:
 int valida_nome(char* nome) {
-  //a variavel abaixo serve para ver o tamanho do nome
-  int tamanho;
-  
-  tamanho = strlen(nome);
-  //o for abaixo faz as seguintes coisas: 1- cria a fariavel i que vai servir de contador so nesse looping e controlar quantas vezes ele vai se repetir, 2- i < tamanho-1 (Esta é a condição de parada do loop. Enquanto a expressão dentro dela (neste caso, "i < tamanho-1") for verdadeira, o loop continuará sendo executado.) e por fim, 3- i++ (Isso é chamado de expressão de incremento e é executado após cada iteração do loop. Ele incrementa o valor de "i" em 1 a cada vez que o loop é executado)
-  for (int i = 0; i < tamanho-1; i++) {
-    // abaixo temos um if que usa ! para inverter a logica de funcionamento de "eh_letra", o que permite, toda vez que começar um novo looping, analisar a informação que "eh letra" retorna, 0 vira 1 (mostra que aquilo não é uma letra ou espaço) e 1 vira 0 (significa que o caractere analisado é uma letra ou espaço)
-// 0 vira 1 (mostra que aquilo não é uma letra ou espaço) e 1 vira 0 (significa que o caractere analisado é uma letra ou espaço)
+  int tamanho = strlen(nome);
+  if (tamanho == 0) { // Verifica se o nome não está vazio
+    return 0;
+  }
+  for (int i = 0; i < tamanho; i++) {
     if (!eh_letra(nome[i])) {
       return 0;
     }
   }
-  return 1;  
+  return 1;
 }
-// "eh_letra" funciona assim: durante o looping, para cada rodada do looping, ele pega o caractere posição i da rodada i do looping, ou seja, pega o caractere na posição 0 se for o primeiro looping, o caractere posição 1 se for o seguindo looping e assim vai, após pegar, ele vai comparar esse caractere nos ifs
+
+
 int eh_letra(char c) {
-  //aqui comparamos o caractere com letras maiusculas entre A e Z (inclusos), se for igual, retorna 1 e o resto ta explicado em cima
-  if (c >= 'A' && c <= 'Z') {
+  if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == ' ' || c == '.' || c == 13) {
     return 1;
-  //aqui comparamos o caractere com letras minusculas entre a e z (inclusos), se for igual, retorna 1 e o resto ta explicado em cima
-  } else if (c >= 'a' && c <= 'z') {
-    
-    return 1;
-  //aqui comparamos o caractere com " "(espaço) ou 13(que também representa "espaço"), se for igual, retorna 1 e o resto ta explicado em cima
-  } else if (c == ' ' || c == 13) {
-    return 1;
-  //por fim, se for qualquer outra coisa, não é aprovado, retorna 0 e o resto tá explicado mais acima
-  } else if (c == '.') {
-    return 1;
-  //por fim, se for qualquer outra coisa, não é aprovado, retorna 0 e o resto tá explicado mais acima
   } else {
     return 0;
-  }  
+  }
 }
+
 //funções para ler e validar cpf
 
 int valida_cpf(char* cpf) {//função adaptada da função exemplo valida_cpf em python do primeiro semestre para a linguagem C disponibilizado pelo professor flavius

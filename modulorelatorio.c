@@ -318,27 +318,6 @@ void mostra_produto(Rede* red) {
     }
 }
 
-char* pega_nome_fornecedor(char* cpf_fornecedor) {
-    FILE* file = fopen("fornecedores.dat", "r");
-    Insumo fornecedor;
-    char* nome_fornecedor = NULL;
-
-    if (file != NULL) {
-        while (fread(&fornecedor, sizeof(Insumo), 1, file)) {
-            if (strcmp(fornecedor.cpf_fornecedor, cpf_fornecedor) == 0) {
-                nome_fornecedor = malloc(strlen(fornecedor.nomefornecedor) + 1);
-                strcpy(nome_fornecedor, fornecedor.nomefornecedor);
-                break;
-            }
-        }
-        fclose(file);
-    }
-
-    return nome_fornecedor;
-}
-
-
-
 //lista vendas
 
 void do_menu_relatorioVendas(void) {
