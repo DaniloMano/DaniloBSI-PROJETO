@@ -202,33 +202,3 @@ int eh_numerovalido(char c) {//seguindo a mesma logica do codigo base
     return 0;
   }  
 }
-
-//VALIDA APENAS NUMERO
-
-//funções para validar celular de forma simplificada
-//funções para ler e validar email
-//seguindo a mesma logica do codigo exemplo de flavius
-int valida_numero(char* numero) {
-  int tam;
-  
-  tam = strlen(numero);
-  for (int i = 0; i < tam-1; i++) {
-    if (!eh_numero(numero[i])) {
-      return 0;
-    }
-  }
-  return 1;  
-}
-
-
-int eh_numero(char c) {//seguindo a mesma logica do codigo exemplo de flavius
-  if (c >= '0' && c <= '9') {
-    return 1;
-  } else if (c == '.') {
-    return 1;
-  } else if (c == ',') {
-    return 1;
-  }else {
-    return 0;
-  }  
-}

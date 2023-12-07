@@ -43,6 +43,7 @@ Insumo* tela_cadastrar_fornecedor(void)
     getchar();
     printf("===          Nome do Fornecedor: ");
     scanf(" %51[^\n]", importacao->nomefornecedor);
+    ver_nome(importacao->nomefornecedor);
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     scanf(" %15[^\n]", importacao->cpf_fornecedor);
     ver_cpf(importacao->cpf_fornecedor);    
@@ -193,7 +194,6 @@ Insumo* tela_editar_contato_do_fornecedor(void)
     if (fp == NULL) {
         printf("=== Nao foi possivel abrir o arquivo 'fornecedores.dat' ===\n");
         getchar();
-        
 
         free(importacao);  // Libera a memória alocada antes de retornar NULL
         return NULL;
@@ -205,7 +205,6 @@ Insumo* tela_editar_contato_do_fornecedor(void)
             return importacao;
         }
     }
-
     fclose(fp);
     free(importacao);  // Libera a memória alocada antes de retornar NULL
     return NULL;
@@ -274,6 +273,7 @@ void tela_editar_nome_fornecedor(Insumo* fornecedor_editado) {
             if (strcmp(fornecedor_salvo->cpf_fornecedor, fornecedor_editado->cpf_fornecedor) == 0) {
                 achou = 1;
                 scanf(" %51[^\n]", nome_temporario);
+                ver_nome(nome_temporario);
                 strcpy(fornecedor_salvo->nomefornecedor, nome_temporario);
                 fseek(fp, -1 * sizeof(Insumo), SEEK_CUR);
                 fwrite(fornecedor_salvo, sizeof(Insumo), 1, fp);
