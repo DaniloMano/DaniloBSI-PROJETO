@@ -39,7 +39,7 @@ void escolha_editar_produto(void)
             case 0:
                 break;
             default:
-                printf("===            Opção invalida. Tente novamente.                             ===\n");
+                printf("===            Opcao invalida. Tente novamente.                             ===\n");
                 getchar();
                 getchar();
                 break;
@@ -525,10 +525,15 @@ void tela_editar_atividade(Rede* rede_editada) {
             if (rede_salva->codigoproduto == rede_editada->codigoproduto) {
                 achou = 1;
                 scanf(" %c", &atividade_temporaria);
+                if (atividade_temporaria == 'a' || atividade_temporaria == 'i'){
                 rede_salva->atividade = atividade_temporaria;
                 fseek(fp, -1 * sizeof(Rede), SEEK_CUR);
                 fwrite(rede_salva, sizeof(Rede), 1, fp);
                 printf("=== Produto Editado com Sucesso                                            ===\n");
+                } else {
+                    printf("=== Entrada invalida. Digite 'a' para Ativo ou 'i' para Inativo.           ===\n");
+                    }
+                getchar();
                 getchar();
                 break;
             }
@@ -711,7 +716,7 @@ void deleta_arquivo_rede(void) {
     if (remove(arquivo) == 0) {
         printf("===    Arquivo Deletado com Sucesso                                         ===\n");
     } else {
-        perror("===    Arquivo Não Encontrado Para Exclusão                               ===\n");
+        perror("===    Arquivo Nao Encontrado Para Exclusao                               ===\n");
     }
     getchar();
 }
