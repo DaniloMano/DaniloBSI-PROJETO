@@ -48,13 +48,21 @@ Vendido* tela_realizar_venda(void)
     getchar();
     printf("===                                                                         ===\n");
     printf("===          Codigo de Venda (Apenas Numeros): ");
-    scanf("%hd", &compra->codigo_venda);
+    ler_short_int(&compra->codigo_venda);
     printf("===          Codigo do Produto (Apenas Numeros): ");
-    scanf("%hd", &compra->codigo_produto_vendido);
+    ler_short_int(&compra->codigo_produto_vendido);
     printf("===          Quantidade a ser Vendida: ");
-    scanf(" %hd", &compra->quantia_vendida);
+    ler_short_int(&compra->quantia_vendida);
     printf("=== Forma de Pagamento(a=a vista| c=credito| d=debito): ");
-    scanf(" %c", &compra->forma_pagamento);
+    do {
+        scanf(" %c", &compra->forma_pagamento);
+        // Verifica se a forma de pagamento é válida
+        if (compra->forma_pagamento == 'a' || compra->forma_pagamento == 'c' || compra->forma_pagamento == 'd') {
+            break; // Sai do loop se for válido
+        } else {
+            printf("=== Forma de pagamento invalida. Tente novamente: ");
+        }
+    } while (1);
     printf("===          CPF/CNPJ do Cliente: ");
     scanf(" %15[^\n]", compra->cpf);
     ver_cpf(compra->cpf);
@@ -314,7 +322,7 @@ void tela_editar_produto_vendido(Vendido* compra_editada)
     while (fread(venda_salva, sizeof(Vendido), 1, fp) == 1) {
         if (venda_salva->codigo_venda == compra_editada->codigo_venda) {
             achou = 1;
-            scanf("%hd", &codigoproduto_temporario);
+            ler_short_int(&codigoproduto_temporario);
             venda_salva->codigo_produto_vendido = codigoproduto_temporario;
             fseek(fp, -1 * sizeof(Vendido), SEEK_CUR);
             fwrite(venda_salva, sizeof(Vendido), 1, fp);
@@ -368,7 +376,7 @@ void tela_editar_quantidade_vendida(Vendido* compra_editada)
     while (fread(venda_salva, sizeof(Vendido), 1, fp) == 1) {
         if (venda_salva->codigo_venda == compra_editada->codigo_venda) {
             achou = 1;
-            scanf("%hd", &quantidade_temporaria);
+            ler_short_int(&quantidade_temporaria);
             venda_salva->quantia_vendida = quantidade_temporaria;
             fseek(fp, -1 * sizeof(Vendido), SEEK_CUR);
             fwrite(venda_salva, sizeof(Vendido), 1, fp);
@@ -422,6 +430,7 @@ void tela_editar_forma_de_pagamento(Vendido* compra_editada)
         if (venda_salva->codigo_venda == compra_editada->codigo_venda) {
             achou = 1;
             scanf("%c", &forma_pagamento_temporario);
+            if (forma_pagamento_temporario == 'a' ||forma_pagamento_temporario == 'c' ||forma_pagamento_temporario == 'd'){
             venda_salva->forma_pagamento = forma_pagamento_temporario;
             fseek(fp, -1 * sizeof(Vendido), SEEK_CUR);
             fwrite(venda_salva, sizeof(Vendido), 1, fp);
@@ -429,6 +438,12 @@ void tela_editar_forma_de_pagamento(Vendido* compra_editada)
             getchar();
             getchar();
             break;
+        } else {    
+            printf("=== Entrada Invalida, Tente Novamente                                       ===\n");
+            getchar();
+            getchar();
+            break;
+            }
         }
     }
     if (!achou) {
