@@ -45,6 +45,7 @@ Contato* tela_cadastrar_cliente(void)
     getchar();
     printf("===          Nome do Cliente: ");
     scanf(" %51[^\n]", contato->nomecliente);
+    ver_nome(contato->nomecliente);
     printf("===          CPF/CNPJ(Apenas Numeros): ");
     scanf(" %15[^\n]", contato->cpf_cliente);
     ver_cpf(contato->cpf_cliente);    
@@ -274,6 +275,7 @@ void tela_editar_nome_cliente(Contato* cliente_editado) {
             if (strcmp(cliente_salvo->cpf_cliente, cliente_editado->cpf_cliente) == 0) {
                 achou = 1;
                 scanf(" %51[^\n]", nome_temporario);
+                ver_nome(nome_temporario);
                 strcpy(cliente_salvo->nomecliente, nome_temporario);
                 fseek(fp, -1 * sizeof(Contato), SEEK_CUR);
                 fwrite(cliente_salvo, sizeof(Contato), 1, fp);
