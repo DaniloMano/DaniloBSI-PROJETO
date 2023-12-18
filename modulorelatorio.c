@@ -138,7 +138,7 @@ void tela_menu_relatoriosProdutos(void)
     printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                                                                         ===\n");
-    printf("===          1. Codigo                                                      ===\n");
+    printf("===          1. Ordem de Cadastro                                           ===\n");
     printf("===          2. Preco                                                       ===\n");
     printf("===          3. Quantidade                                                  ===\n");
     printf("===          4. Fornecedor                                                  ===\n");
@@ -371,7 +371,7 @@ void tela_menu_relatoriosVendas(void)
     printf("===                        >>>|MENU RELATORIOS|<<<                          ===\n");
     printf("===-------------------------------------------------------------------------===\n");
     printf("===                                                                         ===\n");
-    printf("===          1. Codigo de Vendas                                            ===\n");
+    printf("===          1. Ordem de Cadastro                                           ===\n");
     printf("===          2. Codigo Do Produto                                           ===\n");
     printf("===          3. CPF                                                         ===\n");
     printf("===          4. Quantia Vendida                                             ===\n");
